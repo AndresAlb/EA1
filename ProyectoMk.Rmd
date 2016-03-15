@@ -9,7 +9,7 @@ Karina Ibarra 136608, Daniela Ordoñez 136977, Andres Albores 131749
 
 ###Violencia intrafamiliar (plantamiento del problema)
 
-Violencia intrafamiliar es un tipo de abuso que puede incluir violencia fisica, violencia sexual, amenazas de violencia o abuso emocional. Su origen es debatido por muchos aunque se cree que las principales causas son falta de recursos econÃ³micos, el abuso del alcohol y la drogadicciÃ³n, asociados comÃºnmente con  la pobreza.
+Violencia intrafamiliar es un tipo de abuso que puede incluir violencia fisica, violencia sexual, amenazas de violencia o abuso emocional. Su origen es debatido por muchos aunque se cree que las principales causas son falta de recursos econÃ³micos, el abuso del alcohol y la drogadicciÃ³n, asociados comÃºnmente con la pobreza.
 
 Fuente:
 http://www.violenciaenlafamilia.conapo.gob.mx/en/Violencia_Familiar/Violencia_en_la_Familia
@@ -20,22 +20,22 @@ Los datos en los que nos basamos para nuestra investigaciÃ³n se obtuvieron de 
 
 La informaciÃ³n esta dividida en:
 
-  -Casos reportados por fuentes: muestra el nÃºmero total de victimas por entidad federativa, reportado por las principales instituciones de salud.
+ -Casos reportados por fuentes: muestra el nÃºmero total de victimas por entidad federativa, reportado por las principales instituciones de salud.
 
-  -Casos por grupo de Edad: Presenta el nÃºmero total de victimas por entidad federativa, reportado para los grupos de edad establecidos.
+ -Casos por grupo de Edad: Presenta el nÃºmero total de victimas por entidad federativa, reportado para los grupos de edad establecidos.
 
-  -Casos de ocurrencia por mes: Presenta el nÃºmero total de victimas, por entidad federativa, reportado por mes.
+ -Casos de ocurrencia por mes: Presenta el nÃºmero total de victimas, por entidad federativa, reportado por mes.
 
 Asimismo, para cada uno de estos tres grandes grupos la informaciÃ³n se divide en tres categorias segÃºn gÃ©nero: Femenino, Masculino y ambos.
 
 **Nota:** Las categorias utilizadas para cada uno de los tres grandes grupos se presentan en el diccionario adjunto. 
 
 ### Del Presente Documento
-En este documento se presenta una anÃ¡lisis de los casos presentados de violencia domestica,durante el periodo 2003-2014, basado en los datos registrados por la DirecciÃ³n General de EpidemiologÃ�a de la Secretaria de Salud. En  este se presenta, en una primera parte los problemas que se plantean para ser resueltos mediante el anÃ¡lisis; posteriormente se describe cÃ³mo es que se han obtenido los datos y con quÃ© medios se ha realizado la obtenciÃ³n de los mismas,asimismo, se realiza una breve descripciÃ³n de los datos y con base a esta se define el alcance y lÃ�mite de los datos; ulteriormente se transforman los datos obtenidos a formatos que permitan una mejor manipulaciÃ³n de los mismos y faciliten su analisis; en seguida se realizan pruebas de calidad sobre los datos de transformados;procedemos despuÃ©s a realizar el anÃ¡lisis exploratorio de los datos con el objetivo de resolver los problemas que se plantearon en un inicio y , finalmente, se se presentan las conclusiones para el trabajo realizado.
+En este documento se presenta una anÃ¡lisis de los casos presentados de violencia domestica,durante el periodo 2003-2014, basado en los datos registrados por la DirecciÃ³n General de EpidemiologÃ?a de la Secretaria de Salud. En este se presenta, en una primera parte los problemas que se plantean para ser resueltos mediante el anÃ¡lisis; posteriormente se describe cÃ³mo es que se han obtenido los datos y con quÃ© medios se ha realizado la obtenciÃ³n de los mismas,asimismo, se realiza una breve descripciÃ³n de los datos y con base a esta se define el alcance y lÃ?mite de los datos; ulteriormente se transforman los datos obtenidos a formatos que permitan una mejor manipulaciÃ³n de los mismos y faciliten su analisis; en seguida se realizan pruebas de calidad sobre los datos de transformados;procedemos despuÃ©s a realizar el anÃ¡lisis exploratorio de los datos con el objetivo de resolver los problemas que se plantearon en un inicio y , finalmente, se se presentan las conclusiones para el trabajo realizado.
 
 #DefiniciÃ³n del Problema
 
-En el presente documento nos proponemos identificar cuÃ¡les son las Ã©pocas en que se debe prestar mayor atenciÃ³n al fenÃ³meno, cuÃ¡l es la tendencia del fenÃ³meno, cuÃ¡les son las instituciones que atienden un mayor nÃºmero de casos, quÃ© entidades y quÃ© grupos de edad y quÃ© sexo son mÃ¡s vulnerables al fenÃ³meno para mejorar el apoyo que se brinda a las vÃ�ctimas y las acciones preventivas que se toman en cada estado.
+En el presente documento nos proponemos identificar cuÃ¡les son las Ã©pocas en que se debe prestar mayor atenciÃ³n al fenÃ³meno, cuÃ¡l es la tendencia del fenÃ³meno, cuÃ¡les son las instituciones que atienden un mayor nÃºmero de casos, quÃ© entidades y quÃ© grupos de edad y quÃ© sexo son mÃ¡s vulnerables al fenÃ³meno para mejorar el apoyo que se brinda a las vÃ?ctimas y las acciones preventivas que se toman en cada estado.
 
 #ObtenciÃ³n de datos
 
@@ -65,18 +65,18 @@ library(plyr)
 violencia.fuente <- NULL 
 titulos.fuente <- NULL
 for (i in 1:12){ 
-violencia.fuente[[i]] <- read.csv(paste("./Datos/BrutosCSV/Fuente/FuenteFem",i+2002,".csv",  sep = "" ), stringsAsFactors = FALSE)
-titulos.fuente[i] <- paste("FuenteFem",i+2002,sep="")
+violencia.fuente[[i]] <- read.csv(paste("./Datos/BrutosCSV/Fuente/FueFem",i+2002,".csv", sep = "" ), stringsAsFactors = FALSE)
+titulos.fuente[i] <- paste("FueFem",i+2002,sep="")
 }
 
 for (i in 1:12){
-violencia.fuente[[i]] <- read.csv(paste("./Datos/BrutosCSV/Fuente/FuenteGen",i+2002,".csv",sep=""),stringsAsFactors=FALSE)
-titulos.fuente[i] <- paste("FuenteGen",i+2002,sep="")
+violencia.fuente[[i+12]] <- read.csv(paste("./Datos/BrutosCSV/Fuente/FueGen",i+2002,".csv",sep=""),stringsAsFactors=FALSE)
+titulos.fuente[i+12] <- paste("FueGen",i+2002,sep="")
 }
 
 for (i in 1:12){
-violencia.fuente[[i]] <- read.csv(paste("./Datos/BrutosCSV/Fuente/FuenteMasc",i+2002,".csv",sep=""),stringsAsFactors=FALSE)
-titulos.fuente[i] <- paste("FuenteMasc",i+2002,sep="")
+violencia.fuente[[i+24]] <- read.csv(paste("./Datos/BrutosCSV/Fuente/FueMas",i+2002,".csv",sep=""),stringsAsFactors=FALSE)
+titulos.fuente[i+24] <- paste("FueMas",i+2002,sep="")
 }
 names(violencia.fuente) <- titulos.fuente
 
@@ -84,18 +84,18 @@ names(violencia.fuente) <- titulos.fuente
 violencia.edad <- NULL
 titulos.edad <- NULL
 for (i in 1:12){
-violencia.edad[[i]] <- read.csv(paste("./Datos/BrutosCSV/Grupo/GrupoFem",i+2002,".csv",sep=""),stringsAsFactors=FALSE)
-titulos.edad[i] <- paste("GrupoFem",i+2002,sep="")
+violencia.edad[[i]] <- read.csv(paste("./Datos/BrutosCSV/Grupo/GruFem",i+2002,".csv",sep=""),stringsAsFactors=FALSE)
+titulos.edad[i] <- paste("GruFem",i+2002,sep="")
 }
 
 for (i in 1:12){
-violencia.edad[[i]] <- read.csv(paste("./Datos/BrutosCSV/Grupo/GrupoGen",i+2002,".csv",sep=""),stringsAsFactors=FALSE)
-titulos.edad[i] <- paste("GrupoGen",i+2002,sep="")
+violencia.edad[[i+12]] <- read.csv(paste("./Datos/BrutosCSV/Grupo/GruGen",i+2002,".csv",sep=""),stringsAsFactors=FALSE)
+titulos.edad[i+12] <- paste("GruGen",i+2002,sep="")
 }
 
 for (i in 1:12){
-violencia.edad[[i]] <- read.csv(paste("./Datos/BrutosCSV/Grupo/GrupoMasc",i+2002,".csv",sep=""),stringsAsFactors=FALSE)
-titulos.edad[i] <- paste("GrupoMasc",i+2002,sep="")
+violencia.edad[[i+24]] <- read.csv(paste("./Datos/BrutosCSV/Grupo/GruMas",i+2002,".csv",sep=""),stringsAsFactors=FALSE)
+titulos.edad[i+24] <- paste("GruMas",i+2002,sep="")
 }
 names(violencia.edad) <- titulos.edad
 
@@ -103,18 +103,18 @@ names(violencia.edad) <- titulos.edad
 violencia.mes <- NULL 
 titulos.mes <- NULL
 for (i in 1:12){ 
-violencia.mes[[i]] <- read.csv(paste("./Datos/BrutosCSV/Mes/MesFem",i+2002,".csv",  sep = "" ), stringsAsFactors = FALSE)
-titulos.mes[i] <- paste("GrupoFem",i+2002,sep="")
-  }
+violencia.mes[[i]] <- read.csv(paste("./Datos/BrutosCSV/Mes/MesFem",i+2002,".csv", sep = "" ), stringsAsFactors = FALSE)
+titulos.mes[i] <- paste("MesFem",i+2002,sep="")
+ }
 
 for (i in 1:12){
-violencia.mes[[i]] <- read.csv(paste("./Datos/BrutosCSV/Mes/MesGen",i+2002,".csv",sep=""),stringsAsFactors=FALSE)
-titulos.mes[i] <- paste("GrupoGen",i+2002,sep="")
+violencia.mes[[i+12]] <- read.csv(paste("./Datos/BrutosCSV/Mes/MesGen",i+2002,".csv",sep=""),stringsAsFactors=FALSE)
+titulos.mes[i+12] <- paste("MesGen",i+2002,sep="")
 }
 
 for (i in 1:12){
-violencia.mes[[i]] <- read.csv(paste("./Datos/BrutosCSV/Mes/MesMasc",i+2002,".csv",sep=""),stringsAsFactors=FALSE)
-titulos.mes[i] <- paste("GrupoMasc",i+2002,sep="")
+violencia.mes[[i+24]] <- read.csv(paste("./Datos/BrutosCSV/Mes/MesMas",i+2002,".csv",sep=""),stringsAsFactors=FALSE)
+titulos.mes[i+24] <- paste("MesMas",i+2002,sep="")
 }
 names(violencia.mes) <- titulos.mes
 ```
@@ -154,20 +154,414 @@ names(violencia.mes[[i]]) <-toupper(names(violencia.mes[[i]]))
 ````{r SaveData}
 ##FUENTE
 violencia.intrafamiliar.fuente <- ldply(violencia.fuente,data.frame)
+violencia.intrafamiliar.fuente <- violencia.intrafamiliar.fuente[,1:12]
 save(violencia.intrafamiliar.fuente, file="violencia_intrafamiliar_Fuente.RData")
 
 ##EDAD
 violencia.intrafamiliar.edad <- ldply(violencia.edad,data.frame)
+violencia.intrafamiliar.edad <- violencia.intrafamiliar.edad[,1:14]
 save(violencia.intrafamiliar.edad, file="violencia_intrafamiliar_Edad.RData")
 
 ##MES
 violencia.intrafamiliar.mes <- ldply(violencia.mes,data.frame)
+violencia.intrafamiliar.mes <- violencia.intrafamiliar.mes[,1:15]
 save(violencia.intrafamiliar.mes, file="violencia_intrafamiliar_Mes.RData")
 ```
 
 ##Se consolido la informacion en 3 grupos: violencia.intrafamiliar.fuente, violencia.intrafamiliar.grupo, violencia.intrafamiliar.mes. A continuacion se presenta un extracto de cada uno de ellos:
 
-*Reporte de casos de violencia Mellitus(tipo 2) por Fuente/Institucion*
+*Reporte de casos de violencia por Fuente/Institucion*
 ```{r, echo=FALSE}
 head(violencia.intrafamiliar.fuente)
 ```
+
+*Reporte de casos de violencia por Grupo de Edad*
+```{r, echo=FALSE}
+head(violencia.intrafamiliar.edad)
+```
+
+*Reporte de casos de violencia por Mes*
+```{r, echo=FALSE}
+head(violencia.intrafamiliar.mes)
+```
+
+
+##Se presenta la estructura de los archivos consolidados y las variables de cada uno.
+
+*Reporte de casos de violencia por Fuente/Institucion*
+```{r, echo=FALSE}
+str(violencia.intrafamiliar.fuente)
+```
+
+*Reporte de casos de violencia por Grupo de Edad*
+```{r, echo=FALSE}
+str(violencia.intrafamiliar.edad)
+```
+
+*Reporte de casos de violencia por Mes*
+```{r, echo=FALSE}
+str(violencia.intrafamiliar.mes)
+```
+
+##Limpieza de los datos despues de la carga
+
+##Se introducen dos nuevas variables: Sexo y Periodo.
+##Se elimina la variable .id en cada DATA.
+```{r Sexo y Periodo}
+##FUENTE
+violencia.intrafamiliar.fuente$PERIODO <- factor(substr(violencia.intrafamiliar.fuente$.id,7,10), ordered=TRUE)
+violencia.intrafamiliar.fuente$SEXO <- factor(substr(violencia.intrafamiliar.fuente$.id,4,4))
+violencia.intrafamiliar.fuente$.id <- NULL
+violencia.intrafamiliar.fuente <- within(violencia.intrafamiliar.fuente,{
+ SEXO <- gsub("M","Masculino",SEXO,fixed=TRUE)
+ SEXO <- gsub("F","Femenino",SEXO,fixed=TRUE)
+ SEXO <- gsub("G","General",SEXO,fixed=TRUE)
+ })
+
+save(violencia.intrafamiliar.fuente, file="violencia_intrafamiliar_Fuente(Sexo-Periodo).RData")
+
+##EDAD
+violencia.intrafamiliar.edad$PERIODO <- factor(substr(violencia.intrafamiliar.edad$.id,7,10), ordered=TRUE)
+violencia.intrafamiliar.edad$SEXO <- factor(substr(violencia.intrafamiliar.edad$.id,4,4))
+violencia.intrafamiliar.edad$.id <- NULL
+violencia.intrafamiliar.edad <- within(violencia.intrafamiliar.edad,{
+ SEXO <- gsub("M","Masculino",SEXO,fixed=TRUE)
+ SEXO <- gsub("F","Femenino",SEXO,fixed=TRUE)
+ SEXO <- gsub("G","General",SEXO,fixed=TRUE)
+ })
+
+save(violencia.intrafamiliar.edad, file="violencia_intrafamiliar_Edad(Sexo-Periodo).RData")
+
+##MES
+violencia.intrafamiliar.mes$PERIODO <- factor(substr(violencia.intrafamiliar.mes$.id,7,10), ordered=TRUE)
+violencia.intrafamiliar.mes$SEXO <- factor(substr(violencia.intrafamiliar.mes$.id,4,4))
+violencia.intrafamiliar.mes$.id <- NULL
+violencia.intrafamiliar.mes <- within(violencia.intrafamiliar.mes,{
+ SEXO <- gsub("M","Masculino",SEXO,fixed=TRUE)
+ SEXO <- gsub("F","Femenino",SEXO,fixed=TRUE)
+ SEXO <- gsub("G","General",SEXO,fixed=TRUE)
+ })
+
+save(violencia.intrafamiliar.mes, file="violencia_intrafamiliar_Mes(Sexo-Periodo).RData")
+```
+
+##Convertimos las variables a tipo nominal
+```{r Variable Nominal, echo=FALSE}
+
+#FUENTE
+violencia.intrafamiliar.fuente$ESTADO <- factor(violencia.intrafamiliar.fuente$ESTADO)
+violencia.intrafamiliar.fuente$SEXO <- factor(violencia.intrafamiliar.fuente$SEXO)
+
+save(violencia.intrafamiliar.fuente,file="violencia_Fuente_Limp.RData")
+
+#EDAD
+violencia.intrafamiliar.edad$ESTADO <- factor(violencia.intrafamiliar.edad$ESTADO)
+violencia.intrafamiliar.edad$SEXO <- factor(violencia.intrafamiliar.edad$SEXO)
+
+save(violencia.intrafamiliar.edad,file="violencia_Edad_Limp.RData")
+
+
+#MES
+violencia.intrafamiliar.mes$ESTADO <- factor(violencia.intrafamiliar.mes$ESTADO)
+violencia.intrafamiliar.mes$SEXO <- factor(violencia.intrafamiliar.mes$SEXO)
+
+save(violencia.intrafamiliar.mes,file="violencia_Mes_Limp.RData")
+
+```
+
+
+##Quitamos los espacios entre numeros
+```{r Quitar Espacios, echo=FALSE }
+##FUENTE
+violencia.intrafamiliar.fuente <- within(violencia.intrafamiliar.fuente, {
+   SSA <- gsub("\\s+|,","",SSA)
+   IMSS.ORD <- gsub("\\s+|,","",IMSS.ORD)
+   ISSSTE <- gsub("\\s+|,","",ISSSTE)
+   IMSS.OP <- gsub("\\s+|,","",IMSS.OP)
+   DIF <- gsub("\\s+|,","",DIF)
+   PEMEX <- gsub("\\s+|,","",PEMEX)
+   SEDENA <- gsub("\\s+|,","",SEDENA)
+   SEMAR <- gsub("\\s+|,","",SEMAR)
+   OTRAS <- gsub("\\s+|,","",OTRAS)
+ })
+
+##EDAD
+violencia.intrafamiliar.edad <- within(violencia.intrafamiliar.edad,{
+ MENOR.A.1 <- gsub("\\s+|,","",MENOR.A.1)
+ X1.A.4 <- gsub("\\s+|,|,","",X1.A.4)
+ X5.A.9 <- gsub("\\s+|,","",X5.A.9)
+ X10.A.14 <- gsub("\\s+|,","",X10.A.14)
+ X15.A.19 <- gsub("\\s+|,","",X15.A.19)
+ X20.A.24 <- gsub("\\s+|,","",X20.A.24)
+ X25.A.44 <- gsub("\\s+|,","",X25.A.44)
+ X45.A.49 <- gsub("\\s+|,","",X45.A.49)
+ X50.A.59 <- gsub("\\s+|,","",X50.A.59)
+ X60.A.64 <- gsub("\\s+|,","",X60.A.64)
+ X65.O.MAS <- gsub("\\s+|,","",X65.O.MAS)
+ DESCONOCIDA <- gsub("\\s+|,","",DESCONOCIDA) 
+})
+
+##MES
+
+violencia.intrafamiliar.mes <- within(violencia.intrafamiliar.mes, {
+   ENE <- gsub("\\s+|,","",ENE)
+   FEB <- gsub("\\s+|,","",FEB)
+   MAR <- gsub("\\s+|,","",MAR)
+   ABR <- gsub("\\s+|,","",ABR)
+   MAY <- gsub("\\s+|,","",MAY)
+   JUN <- gsub("\\s+|,","",JUN)
+   JUL <- gsub("\\s+|,","",JUL)
+   AGO <- gsub("\\s+|,","",AGO)
+   SEP <- gsub("\\s+|,","",SEP)
+   OCT <- gsub("\\s+|,","",OCT)
+   NOV <- gsub("\\s+|,","",NOV)
+   DIC <- gsub("\\s+|,","",DIC)
+ })
+
+```
+
+### Sustituimos los valores nulos por NA
+
+```{r}
+
+# FUENTE
+violencia.intrafamiliar.fuente <- within(violencia.intrafamiliar.fuente, {
+     SSA <- gsub("[S.R.,S/R,N.A.,N/A]{1,}","NA",SSA)
+     IMSS.ORD <- gsub("[S.R.,S/R,N.A.,N/A]{1,}","NA",IMSS.ORD)
+     ISSSTE <- gsub("[S.R.,S/R,N.A.,N/A]{1,}","NA",ISSSTE)
+     IMSS.OP <- gsub("[S.R.,S/R,N.A.,N/A]{1,}","NA",IMSS.OP)
+     DIF <- gsub("[S.R.,S/R,N.A.,N/A]{1,}","NA",DIF)
+     PEMEX <- gsub("[S.R.,S/R,N.A.,N/A]{1,}","NA",PEMEX)
+     SEDENA <- gsub("[S.R.,S/R,N.A.,N/A]{1,}","NA",SEDENA)
+     SEMAR <- gsub("[S.R.,S/R,N.A.,N/A]{1,}","NA",SEMAR)
+     OTRAS <- gsub("[S.R.,S/R,N.A.,N/A]{1,}","NA",OTRAS)
+     })
+
+# MES
+violencia.intrafamiliar.mes <- within(violencia.intrafamiliar.mes, {
+     ENE <- gsub("[S.R.,S/R,N.A.,N/A]{1,}","NA",ENE)
+     FEB <- gsub("[S.R.,S/R,N.A.,N/A]{1,}","NA",FEB)
+     MAR <- gsub("[S.R.,S/R,N.A.,N/A]{1,}","NA",MAR)
+     ABR <- gsub("[S.R.,S/R,N.A.,N/A]{1,}","NA",ABR)
+     MAY <- gsub("[S.R.,S/R,N.A.,N/A]{1,}","NA",MAY)
+     JUN <- gsub("[S.R.,S/R,N.A.,N/A]{1,}","NA",JUN)
+     JUL <- gsub("[S.R.,S/R,N.A.,N/A]{1,}","NA",JUL)
+     AGO <- gsub("[S.R.,S/R,N.A.,N/A]{1,}","NA",AGO)
+     SEP <- gsub("[S.R.,S/R,N.A.,N/A]{1,}","NA",SEP)
+     OCT <- gsub("[S.R.,S/R,N.A.,N/A]{1,}","NA",OCT)
+     NOV <- gsub("[S.R.,S/R,N.A.,N/A]{1,}","NA",NOV)
+     DIC <- gsub("[S.R.,S/R,N.A.,N/A]{1,}","NA",DIC)
+     })
+
+# EDAD
+violencia.intrafamiliar.edad <- within(violencia.intrafamiliar.edad, {
+     MENOR.A.1 <- gsub("[S.R.,S/R,N.A.,N/A]{1,}","NA",MENOR.A.1)
+     X1.A.4 <- gsub("[S.R.,S/R,N.A.,N/A]{1,}","NA",X1.A.4)
+     X5.A.9 <- gsub("[S.R.,S/R,N.A.,N/A]{1,}","NA",X5.A.9)
+     X10.A.14 <- gsub("[S.R.,S/R,N.A.,N/A]{1,}","NA",X10.A.14)
+     X15.A.19 <- gsub("[S.R.,S/R,N.A.,N/A]{1,}","NA",X15.A.19)
+     X20.A.24 <- gsub("[S.R.,S/R,N.A.,N/A]{1,}","NA",X20.A.24)
+     X25.A.44 <- gsub("[S.R.,S/R,N.A.,N/A]{1,}","NA",X25.A.44)
+     X45.A.49 <- gsub("[S.R.,S/R,N.A.,N/A]{1,}","NA",X45.A.49)
+     X50.A.59 <- gsub("[S.R.,S/R,N.A.,N/A]{1,}","NA",X50.A.59)
+     X60.A.64 <- gsub("[S.R.,S/R,N.A.,N/A]{1,}","NA",X60.A.64)
+     X65.O.MAS <- gsub("[S.R.,S/R,N.A.,N/A]{1,}","NA",X65.O.MAS)
+     DESCONOCIDA <- gsub("[S.R.,S/R,N.A.,N/A]{1,}","NA",DESCONOCIDA)
+     })
+
+```
+
+
+##Convertimos a numerico los datos
+```{r Numeric, echo=FALSE ,warning=FALSE}
+
+##FUENTE
+violencia.intrafamiliar.fuente <- within(violencia.intrafamiliar.fuente, {
+ SSA <- as.numeric(SSA)
+ IMSS.ORD <- as.numeric(IMSS.ORD)
+ ISSSTE <- as.numeric(ISSSTE)
+ IMSS.OP <- as.numeric(IMSS.OP)
+ DIF <- as.numeric(DIF)
+ PEMEX <- as.numeric(PEMEX)
+ SEDENA <- as.numeric(SEDENA)
+ SEMAR <- as.numeric(SEMAR)
+ OTRAS <- as.numeric(OTRAS)
+})
+
+##MES
+violencia.intrafamiliar.mes <- within(violencia.intrafamiliar.mes, {
+  ENE <- as.numeric(ENE)
+  FEB <- as.numeric(FEB)
+  MAR <- as.numeric(MAR)
+  ABR <- as.numeric(ABR)
+  MAY <- as.numeric(MAY)
+  JUN <- as.numeric(JUN)
+  JUL <- as.numeric(JUL)
+  AGO <- as.numeric(AGO)
+  SEP <- as.numeric(SEP)
+  OCT <- as.numeric(OCT)
+  NOV <- as.numeric(NOV)
+  DIC <- as.numeric(DIC)
+})
+
+##EDAD
+violencia.intrafamiliar.edad <- within(violencia.intrafamiliar.edad,{  
+ MENOR.A.1 <- as.numeric(MENOR.A.1)
+ X1.A.4 <- as.numeric(X1.A.4)
+ X5.A.9 <- as.numeric(X5.A.9)
+ X10.A.14 <- as.numeric(X10.A.14)
+ X15.A.19 <- as.numeric(X15.A.19)
+ X20.A.24 <- as.numeric(X20.A.24)
+ X25.A.44<- as.numeric(X25.A.44)
+ X45.A.49 <- as.numeric(X45.A.49)
+ X50.A.59 <- as.numeric(X50.A.59)
+ X60.A.64 <- as.numeric(X60.A.64)
+ X65.O.MAS<- as.numeric(X65.O.MAS)
+ DESCONOCIDA <- as.numeric(DESCONOCIDA)
+})
+
+```
+
+## Se introduce la columna TOTAL, que suma las columnas de cada fila.
+```{r ColumnaTotal}
+
+##FUENTE
+FUENTE <- violencia.intrafamiliar.fuente[,c(-1,-11,-12,-13)]
+violencia.intrafamiliar.fuente$TOTAL <- apply(FUENTE,1,function(x) sum(x, na.rm=TRUE))
+
+##MES
+MES <- violencia.intrafamiliar.mes[,c(-1,-2,-15,-16)]
+violencia.intrafamiliar.mes$TOTAL <- apply(MES,1,function(x) sum(x,na.rm=TRUE))
+
+##EDAD
+EDAD<-violencia.intrafamiliar.edad[,c(-1,-14,-15)]
+violencia.intrafamiliar.edad$TOTAL <- apply(EDAD,1,function(x) sum(x,na.rm=TRUE))
+
+```
+
+
+## Con los cambios anteriores, la estructura de las 3 bases de datos queda de la siguiente manera.
+
+*Reporte de casos de violencia por Fuente/Institucion*
+```{r, echo=FALSE}
+str(violencia.intrafamiliar.fuente)
+```
+
+*Reporte de casos de violencia por Grupo de Edad*
+```{r, echo=FALSE}
+str(violencia.intrafamiliar.edad)
+```
+
+*Reporte de casos de violencia por Mes*
+```{r, echo=FALSE}
+str(violencia.intrafamiliar.mes)
+```
+
+### Valores Faltantes
+
+Como primer control revisamos los valores faltantes en las tres bases de datos.
+
+*Registros Nulos violencia intrafamiliar Por Fuente/Institucion*
+```{r Registros Nulos Fuente, echo=FALSE}
+sum(is.na(violencia.intrafamiliar.fuente))
+```
+
+*Registros Nulos violencia intrafamiliar Por Edad*
+```{r Registros Nulos Edad, echo=FALSE}
+sum(is.na(violencia.intrafamiliar.edad))
+```
+
+*Registros Nulos violencia intrafamiliar Por Mes*
+```{r Registros Nulos Mes, echo=FALSE}
+sum(is.na(violencia.intrafamiliar.mes))
+```
+
+*Validacion Reporte Casos violencia  Por Fuente*
+```{r ValidacionFuente, echo=FALSE}
+mujeresf.periodo <-  aggregate(TOTAL~PERIODO,data=subset(violencia.intrafamiliar.fuente, SEXO=="Femenino"),sum) 
+colnames(mujeresf.periodo) <- c("Periodo","Femenino")
+
+hombresf.periodo <- aggregate(TOTAL~ PERIODO,data=subset(violencia.intrafamiliar.fuente, SEXO=="Masculino"),sum)
+colnames(hombresf.periodo) <- c("Periodo","Masculino")
+
+generalf.periodo <- aggregate(TOTAL~ PERIODO,data=subset(violencia.intrafamiliar.fuente, SEXO=="General"),sum)
+colnames(generalf.periodo) <- c("Periodo","General")
+
+#Se crearon 3 tablas con la suma de casos por periodo para los diferentes textos (femenino, masculino y general)
+verificacion.fuente <- merge(merge(generalf.periodo,hombresf.periodo),mujeresf.periodo)
+
+#Se juntan las 3 tablas en una sola
+verificacion.fuente$Validacion <- as.list(rowSums(subset(verificacion.fuente,TRUE,c(Masculino,Femenino)),na.rm=FALSE))
+
+#Se agrega una columna con la suma de la columna Femenino y Masculino
+save(verificacion.fuente,file="Validacion_Fuente.RData")
+
+#Se presenta la tabla creada
+verificacion.fuente
+```
+
+*Validacion Reporte Casos violencia  Por Mes*
+```{r VerificacionMes, echo=FALSE}
+mujeresm.periodo <-  aggregate(TOTAL~ PERIODO,data=subset(violencia.intrafamiliar.mes, SEXO=="Femenino"),sum)
+colnames(mujeresm.periodo) <- c("Periodo","Femenino")
+
+hombresm.periodo <- aggregate(TOTAL~ PERIODO,data=subset(violencia.intrafamiliar.mes, SEXO=="Masculino"),sum)
+colnames(hombresm.periodo) <- c("Periodo","Masculino")
+
+generalm.periodo <- aggregate(TOTAL~ PERIODO,data=subset(violencia.intrafamiliar.mes, SEXO=="General"),sum)
+colnames(generalm.periodo) <- c("Periodo","General")
+
+#Se crearon 3 tablas con la suma de casos por periodo para los diferentes textos (femenino, masculino y general)
+verificacion.mes <- merge(merge(generalm.periodo,hombresm.periodo),mujeresm.periodo)
+
+#Se juntan las 3 tablas en una sola
+verificacion.mes$Validacion <- as.list(rowSums(subset(verificacion.mes,TRUE,c(Masculino,Femenino)),na.rm=FALSE))
+
+#Se agrega una columna con la suma de la columna Femenino y Masculino
+save(verificacion.mes,file="Validacion_Mes.RData")
+
+#Se presenta la tabla creada
+verificacion.mes
+
+```
+
+*Validacion Reporte Casos violencia  Por Edad*
+
+```{r VerificacionEdad, echo=FALSE}
+
+mujerese.periodo <-  aggregate(TOTAL~ PERIODO,data=subset(violencia.intrafamiliar.edad, SEXO=="Femenino"),sum)
+colnames(mujerese.periodo) <- c("Periodo","Femenino")
+
+hombrese.periodo <- aggregate(TOTAL~ PERIODO,data=subset(violencia.intrafamiliar.edad, SEXO=="Masculino"),sum)
+colnames(hombrese.periodo) <- c("Periodo","Masculino")
+
+generale.periodo <- aggregate(TOTAL~ PERIODO,data=subset(violencia.intrafamiliar.edad, SEXO=="General"),sum)
+colnames(generale.periodo) <- c("Periodo","General")
+
+#Se crearon 3 tablas con la suma de casos por periodo para los diferentes textos (femenino, masculino y general)
+verificacion.edad <- merge(merge(generale.periodo,hombrese.periodo),mujerese.periodo)
+
+#Se juntan las 3 tablas en una sola
+verificacion.edad$Validacion <- as.list(rowSums(subset(verificacion.edad,TRUE,c(Masculino,Femenino)),na.rm=FALSE))
+
+#Se agrega una columna con la suma de la columna Femenino y Masculino
+save(verificacion.edad,file="Validacion_Edad.RData")
+
+#Se presenta la tabla creada
+verificacion.edad
+
+```
+
+### Resumen de los Datos
+```{r Resumen de los Datos, echo=FALSE}
+###FUENTE
+summary(violencia.intrafamiliar.fuente)
+
+###EDAD
+summary(violencia.intrafamiliar.edad)
+
+###MES
+summary(violencia.intrafamiliar.mes)
+```
+
+Aqui termina la limpieza principal de los datos
