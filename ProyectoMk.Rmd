@@ -266,3 +266,105 @@ save(violencia.intrafamiliar.mes,file="violencia_Mes_Limp.RData")
 
 ```
 
+
+##Quitamos los espacios entre numeros
+```{r Quitar Espacios, echo=FALSE }
+##FUENTE
+violencia.intrafamiliar.fuente <- within(violencia.intrafamiliar.fuente, {
+     SSA <- gsub("\\s+|,","",SSA)
+     IMSS.ORD <- gsub("\\s+|,","",IMSS.ORD)
+     ISSSTE <- gsub("\\s+|,","",ISSSTE)
+     IMSS.OP <- gsub("\\s+|,","",IMSS.OP)
+     DIF <- gsub("\\s+|,","",DIF)
+     PEMEX <- gsub("\\s+|,","",PEMEX)
+     SEDENA <- gsub("\\s+|,","",SEDENA)
+     SEMAR <- gsub("\\s+|,","",SEMAR)
+     OTRAS <- gsub("\\s+|,","",OTRAS)
+ })
+
+##EDAD
+violencia.intrafamiliar.edad <- within(violencia.intrafamiliar.edad,{
+  MENOR.A.1 <- gsub("\\s+|,","",MENOR.A.1)
+  X1.A.4 <- gsub("\\s+|,|,","",X1.A.4)
+  X5.A.9 <- gsub("\\s+|,","",X5.A.9)
+  X10.A.14 <- gsub("\\s+|,","",X10.A.14)
+  X15.A.19 <- gsub("\\s+|,","",X15.A.19)
+  X20.A.24 <- gsub("\\s+|,","",X20.A.24)
+  X25.A.44 <- gsub("\\s+|,","",X25.A.44)
+  X45.A.49 <- gsub("\\s+|,","",X45.A.49)
+  X50.A.59 <- gsub("\\s+|,","",X50.A.59)
+  X60.A.64 <- gsub("\\s+|,","",X60.A.64)
+  X65.O.MAS <- gsub("\\s+|,","",X65.O.MAS)
+  DESCONOCIDA <- gsub("\\s+|,","",DESCONOCIDA) 
+})
+
+##MES
+
+violencia.intrafamiliar.mes <- within(violencia.intrafamiliar.mes, {
+     ENE <- gsub("\\s+|,","",ENE)
+     FEB <- gsub("\\s+|,","",FEB)
+     MAR <- gsub("\\s+|,","",MAR)
+     ABR <- gsub("\\s+|,","",ABR)
+     MAY <- gsub("\\s+|,","",MAY)
+     JUN <- gsub("\\s+|,","",JUN)
+     JUL <- gsub("\\s+|,","",JUL)
+     AGO <- gsub("\\s+|,","",AGO)
+     SEP <- gsub("\\s+|,","",SEP)
+     OCT <- gsub("\\s+|,","",OCT)
+     NOV <- gsub("\\s+|,","",NOV)
+     DIC <- gsub("\\s+|,","",DIC)
+ })
+
+```
+
+##Convertimos a numerico los datos
+```{r Numeric, echo=FALSE ,warning=FALSE}
+
+##FUENTE
+violencia.intrafamiliar.fuente <- within(violencia.intrafamiliar.fuente, {
+  SSA <- as.numeric(SSA)
+  IMSS.ORD <- as.numeric(IMSS.ORD)
+  ISSSTE <- as.numeric(ISSSTE)
+  IMSS.OP <- as.numeric(IMSS.OP)
+  DIF <- as.numeric(DIF)
+  PEMEX <- as.numeric(PEMEX)
+  SEDENA <- as.numeric(SEDENA)
+  SEMAR <- as.numeric(SEMAR)
+  OTRAS <- as.numeric(OTRAS)
+})
+
+##MES
+violencia.intrafamiliar.mes <- within(violencia.intrafamiliar.mes, {
+    ENE <- as.numeric(ENE)
+    FEB <- as.numeric(FEB)
+    MAR <- as.numeric(MAR)
+    ABR <- as.numeric(ABR)
+    MAY <- as.numeric(MAY)
+    JUN <- as.numeric(JUN)
+    JUL <- as.numeric(JUL)
+    AGO <- as.numeric(AGO)
+    SEP <- as.numeric(SEP)
+    OCT <- as.numeric(OCT)
+    NOV <- as.numeric(NOV)
+    DIC <- as.numeric(DIC)
+})
+
+##EDAD
+violencia.intrafamiliar.edad <- within(violencia.intrafamiliar.edad,{   
+ MENOR.A.1 <- as.numeric(MENOR.A.1)
+  X1.A.4 <- as.numeric(X1.A.4)
+  X5.A.9 <- as.numeric(X5.A.9)
+  X10.A.14 <- as.numeric(X10.A.14)
+  X15.A.19 <- as.numeric(X15.A.19)
+  X20.A.24 <- as.numeric(X20.A.24)
+  X25.A.44<- as.numeric(X25.A.44)
+  X45.A.49 <- as.numeric(X45.A.49)
+  X50.A.59 <- as.numeric(X50.A.59)
+  X60.A.64 <- as.numeric(X60.A.64)
+  X65.O.MAS<- as.numeric(X65.O.MAS)
+  DESCONOCIDA <- as.numeric(DESCONOCIDA)
+})
+
+```
+
+
