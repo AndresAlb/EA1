@@ -65,18 +65,18 @@ library(plyr)
 violencia.fuente <- NULL 
 titulos.fuente <- NULL
 for (i in 1:12){ 
-violencia.fuente[[i]] <- read.csv(paste("./Datos/BrutosCSV/Fuente/FuenteFem",i+2002,".csv", sep = "" ), stringsAsFactors = FALSE)
-titulos.fuente[i] <- paste("FuenteFem",i+2002,sep="")
+violencia.fuente[[i]] <- read.csv(paste("./Datos/BrutosCSV/Fuente/FueFem",i+2002,".csv", sep = "" ), stringsAsFactors = FALSE)
+titulos.fuente[i] <- paste("FueFem",i+2002,sep="")
 }
 
 for (i in 1:12){
-violencia.fuente[[i+12]] <- read.csv(paste("./Datos/BrutosCSV/Fuente/FuenteGen",i+2002,".csv",sep=""),stringsAsFactors=FALSE)
-titulos.fuente[i+12] <- paste("FuenteGen",i+2002,sep="")
+violencia.fuente[[i+12]] <- read.csv(paste("./Datos/BrutosCSV/Fuente/FueGen",i+2002,".csv",sep=""),stringsAsFactors=FALSE)
+titulos.fuente[i+12] <- paste("FueGen",i+2002,sep="")
 }
 
 for (i in 1:12){
-violencia.fuente[[i+24]] <- read.csv(paste("./Datos/BrutosCSV/Fuente/FuenteMas",i+2002,".csv",sep=""),stringsAsFactors=FALSE)
-titulos.fuente[i+24] <- paste("FuenteMas",i+2002,sep="")
+violencia.fuente[[i+24]] <- read.csv(paste("./Datos/BrutosCSV/Fuente/FueMas",i+2002,".csv",sep=""),stringsAsFactors=FALSE)
+titulos.fuente[i+24] <- paste("FueMas",i+2002,sep="")
 }
 names(violencia.fuente) <- titulos.fuente
 
@@ -84,18 +84,18 @@ names(violencia.fuente) <- titulos.fuente
 violencia.edad <- NULL
 titulos.edad <- NULL
 for (i in 1:12){
-violencia.edad[[i]] <- read.csv(paste("./Datos/BrutosCSV/Grupo/GrupoFem",i+2002,".csv",sep=""),stringsAsFactors=FALSE)
-titulos.edad[i] <- paste("GrupoFem",i+2002,sep="")
+violencia.edad[[i]] <- read.csv(paste("./Datos/BrutosCSV/Grupo/GruFem",i+2002,".csv",sep=""),stringsAsFactors=FALSE)
+titulos.edad[i] <- paste("GruFem",i+2002,sep="")
 }
 
 for (i in 1:12){
-violencia.edad[[i+12]] <- read.csv(paste("./Datos/BrutosCSV/Grupo/GrupoGen",i+2002,".csv",sep=""),stringsAsFactors=FALSE)
-titulos.edad[i+12] <- paste("GrupoGen",i+2002,sep="")
+violencia.edad[[i+12]] <- read.csv(paste("./Datos/BrutosCSV/Grupo/GruGen",i+2002,".csv",sep=""),stringsAsFactors=FALSE)
+titulos.edad[i+12] <- paste("GruGen",i+2002,sep="")
 }
 
 for (i in 1:12){
-violencia.edad[[i+24]] <- read.csv(paste("./Datos/BrutosCSV/Grupo/GrupoMas",i+2002,".csv",sep=""),stringsAsFactors=FALSE)
-titulos.edad[i+24] <- paste("GrupoMas",i+2002,sep="")
+violencia.edad[[i+24]] <- read.csv(paste("./Datos/BrutosCSV/Grupo/GruMas",i+2002,".csv",sep=""),stringsAsFactors=FALSE)
+titulos.edad[i+24] <- paste("GruMas",i+2002,sep="")
 }
 names(violencia.edad) <- titulos.edad
 
@@ -104,17 +104,17 @@ violencia.mes <- NULL
 titulos.mes <- NULL
 for (i in 1:12){ 
 violencia.mes[[i]] <- read.csv(paste("./Datos/BrutosCSV/Mes/MesFem",i+2002,".csv", sep = "" ), stringsAsFactors = FALSE)
-titulos.mes[i] <- paste("GrupoFem",i+2002,sep="")
+titulos.mes[i] <- paste("MesFem",i+2002,sep="")
  }
 
 for (i in 1:12){
 violencia.mes[[i+12]] <- read.csv(paste("./Datos/BrutosCSV/Mes/MesGen",i+2002,".csv",sep=""),stringsAsFactors=FALSE)
-titulos.mes[i+12] <- paste("GrupoGen",i+2002,sep="")
+titulos.mes[i+12] <- paste("MesGen",i+2002,sep="")
 }
 
 for (i in 1:12){
 violencia.mes[[i+24]] <- read.csv(paste("./Datos/BrutosCSV/Mes/MesMas",i+2002,".csv",sep=""),stringsAsFactors=FALSE)
-titulos.mes[i+24] <- paste("GrupoMas",i+2002,sep="")
+titulos.mes[i+24] <- paste("MesMas",i+2002,sep="")
 }
 names(violencia.mes) <- titulos.mes
 ```
@@ -154,14 +154,17 @@ names(violencia.mes[[i]]) <-toupper(names(violencia.mes[[i]]))
 ````{r SaveData}
 ##FUENTE
 violencia.intrafamiliar.fuente <- ldply(violencia.fuente,data.frame)
+violencia.intrafamiliar.fuente <- violencia.intrafamiliar.fuente[,1:12]
 save(violencia.intrafamiliar.fuente, file="violencia_intrafamiliar_Fuente.RData")
 
 ##EDAD
 violencia.intrafamiliar.edad <- ldply(violencia.edad,data.frame)
+violencia.intrafamiliar.edad <- violencia.intrafamiliar.edad[,1:14]
 save(violencia.intrafamiliar.edad, file="violencia_intrafamiliar_Edad.RData")
 
 ##MES
 violencia.intrafamiliar.mes <- ldply(violencia.mes,data.frame)
+violencia.intrafamiliar.mes <- violencia.intrafamiliar.mes[,1:15]
 save(violencia.intrafamiliar.mes, file="violencia_intrafamiliar_Mes.RData")
 ```
 
@@ -331,7 +334,7 @@ violencia.intrafamiliar.fuente <- within(violencia.intrafamiliar.fuente, {
      PEMEX <- gsub("[S.R.,S/R,N.A.,N/A]{1,}","NA",PEMEX)
      SEDENA <- gsub("[S.R.,S/R,N.A.,N/A]{1,}","NA",SEDENA)
      SEMAR <- gsub("[S.R.,S/R,N.A.,N/A]{1,}","NA",SEMAR)
-     Otras <- gsub("[S.R.,S/R,N.A.,N/A]{1,}","NA",Otras)
+     OTRAS <- gsub("[S.R.,S/R,N.A.,N/A]{1,}","NA",OTRAS)
      })
 
 # MES
@@ -352,18 +355,20 @@ violencia.intrafamiliar.mes <- within(violencia.intrafamiliar.mes, {
 
 # EDAD
 violencia.intrafamiliar.edad <- within(violencia.intrafamiliar.edad, {
-     Salud <- gsub("[S.R.,S/R,N.A.,N/A]{1,}","NA",Salud)
-     IMSS.ORD <- gsub("[S.R.,S/R,N.A.,N/A]{1,}","NA",IMSS.ORD)
-     ISSSTE <- gsub("[S.R.,S/R,N.A.,N/A]{1,}","NA",ISSSTE)
-     IMSS.OP <- gsub("[S.R.,S/R,N.A.,N/A]{1,}","NA",IMSS.OP)
-     DIF <- gsub("[S.R.,S/R,N.A.,N/A]{1,}","NA",DIF)
-     PEMEX <- gsub("[S.R.,S/R,N.A.,N/A]{1,}","NA",PEMEX)
-     SEDENA <- gsub("[S.R.,S/R,N.A.,N/A]{1,}","NA",SEDENA)
-     SEMAR <- gsub("[S.R.,S/R,N.A.,N/A]{1,}","NA",SEMAR)
-     Otras <- gsub("[S.R.,S/R,N.A.,N/A]{1,}","NA",Otras)
+     MENOR.A.1 <- gsub("[S.R.,S/R,N.A.,N/A]{1,}","NA",MENOR.A.1)
+     X1.A.4 <- gsub("[S.R.,S/R,N.A.,N/A]{1,}","NA",X1.A.4)
+     X5.A.9 <- gsub("[S.R.,S/R,N.A.,N/A]{1,}","NA",X5.A.9)
+     X10.A.14 <- gsub("[S.R.,S/R,N.A.,N/A]{1,}","NA",X10.A.14)
+     X15.A.19 <- gsub("[S.R.,S/R,N.A.,N/A]{1,}","NA",X15.A.19)
+     X20.A.24 <- gsub("[S.R.,S/R,N.A.,N/A]{1,}","NA",X20.A.24)
+     X25.A.44 <- gsub("[S.R.,S/R,N.A.,N/A]{1,}","NA",X25.A.44)
+     X45.A.49 <- gsub("[S.R.,S/R,N.A.,N/A]{1,}","NA",X45.A.49)
+     X50.A.59 <- gsub("[S.R.,S/R,N.A.,N/A]{1,}","NA",X50.A.59)
+     X60.A.64 <- gsub("[S.R.,S/R,N.A.,N/A]{1,}","NA",X60.A.64)
+     X65.O.MAS <- gsub("[S.R.,S/R,N.A.,N/A]{1,}","NA",X65.O.MAS)
+     DESCONOCIDA <- gsub("[S.R.,S/R,N.A.,N/A]{1,}","NA",DESCONOCIDA)
      })
 
-### BORRAR ESTE COMENTARIO
 ```
 
 
@@ -419,17 +424,29 @@ violencia.intrafamiliar.edad <- within(violencia.intrafamiliar.edad,{
 
 ## Se introduce la columna TOTAL, que suma las columnas de cada fila.
 ```{r ColumnaTotal}
+
 ##FUENTE
-FUENTE<-violencia.intrafamiliar.fuente[,c(-1,-11,-12)]
-violencia.intrafamiliar.fuente$TOTAL <- as.numeric(rowSums(FUENTE, na.rm=TRUE))
+FUENTE <- violencia.intrafamiliar.fuente[,c(-1,-11,-12,-13)]
+violencia.intrafamiliar.fuente$TOTAL <- apply(FUENTE,1,function(x) sum(x, na.rm=TRUE))
+#violencia.intrafamiliar.fuente$TOTAL <- as.numeric(rowSums(FUENTE, na.rm=TRUE))
+#violencia.intrafamiliar.fuente$TOTAL <- apply(FUENTE[,-10],2,function(x) sum(x,na.rm=TRUE))
 
 ##MES
-MES<-violencia.intrafamiliar.mes[,c(-1,-14,-15)]
-violencia.intrafamiliar.mes$TOTAL <- as.numeric(rowSums(MES, na.rm=TRUE))
+MES <- violencia.intrafamiliar.mes[,c(-1,-2,-15,-16)]
+violencia.intrafamiliar.mes$TOTAL <- apply(MES,1,function(x) sum(x,na.rm=TRUE))
+#violencia.intrafamiliar.mes$TOTAL <- as.numeric(rowSums(MES, na.rm=TRUE))
+#violencia.intrafamiliar.mes$TOTAL- apply(MES[,-10],2,function(x) sum(x,na.rm=TRUE))
+
 
 ##EDAD
 EDAD<-violencia.intrafamiliar.edad[,c(-1,-14,-15)]
-violencia.intrafamiliar.edad$TOTAL <- as.numeric(rowSums(EDAD, na.rm=TRUE))
+violencia.intrafamiliar.edad$TOTAL <- apply(EDAD,1,function(x) sum(x,na.rm=TRUE))
+#violencia.intrafamiliar.edad$TOTAL <- as.numeric(rowSums(EDAD, na.rm=TRUE))
+#violencia.intrafamiliar.edad$TOTAL <- apply(EDAD[,-10],2,function(x) sum(x,na.rm=TRUE))
+
+#
+#
+
 
 ```
 
