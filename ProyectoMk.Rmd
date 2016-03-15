@@ -167,7 +167,102 @@ save(violencia.intrafamiliar.mes, file="violencia_intrafamiliar_Mes.RData")
 
 ##Se consolido la informacion en 3 grupos: violencia.intrafamiliar.fuente, violencia.intrafamiliar.grupo, violencia.intrafamiliar.mes. A continuacion se presenta un extracto de cada uno de ellos:
 
-*Reporte de casos de violencia Mellitus(tipo 2) por Fuente/Institucion*
+*Reporte de casos de violencia  por Fuente/Institucion*
 ```{r, echo=FALSE}
 head(violencia.intrafamiliar.fuente)
 ```
+
+*Reporte de casos de violencia  por Grupo de Edad*
+```{r, echo=FALSE}
+head(violencia.intrafamiliar.edad)
+```
+
+*Reporte de casos de violencia  por Mes*
+```{r, echo=FALSE}
+head(violencia.intrafamiliar.mes)
+```
+
+
+##Se presenta la estructura de los archivos consolidados y las variables de cada uno.
+
+*Reporte de casos de violencia  por Fuente/Institucion*
+```{r, echo=FALSE}
+str(violencia.intrafamiliar.fuente)
+```
+
+*Reporte de casos de violencia  por Grupo de Edad*
+```{r, echo=FALSE}
+str(violencia.intrafamiliar.edad)
+```
+
+*Reporte de casos de violencia  por Mes*
+```{r, echo=FALSE}
+str(violencia.intrafamiliar.mes)
+```
+
+##Limpieza de los datos despues de la carga
+
+##Se introducen dos nuevas variables: Sexo y Periodo.
+##Se elimina la variable .id en cada DATA.
+```{r Sexo y Periodo}
+##FUENTE
+violencia.intrafamiliar.fuente$PERIODO <- factor(substr(violencia.intrafamiliar.fuente$.id,5,8), ordered=TRUE)
+violencia.intrafamiliar.fuente$SEXO <- factor(substr(violencia.intrafamiliar.fuente$.id,3,3))
+violencia.intrafamiliar.fuente$.id <- NULL
+violencia.intrafamiliar.fuente <- within(violencia.intrafamiliar.fuente,{
+  SEXO <- gsub("m","Masculino",SEXO,fixed=TRUE)
+  SEXO <- gsub("f","Femenino",SEXO,fixed=TRUE)
+  SEXO <- gsub("g","General",SEXO,fixed=TRUE)
+ })
+
+save(violencia.intrafamiliar.fuente, file="violencia_intrafamiliar_Fuente(Sexo-Periodo).RData")
+
+##EDAD
+violencia.intrafamiliar.edad$PERIODO <- factor(substr(violencia.intrafamiliar.edad$.id,5,8), ordered=TRUE)
+violencia.intrafamiliar.edad$SEXO <- factor(substr(violencia.intrafamiliar.edad$.id,3,3))
+violencia.intrafamiliar.edad$.id <- NULL
+violencia.intrafamiliar.edad <- within(violencia.intrafamiliar.edad,{
+  SEXO <- gsub("m","Masculino",SEXO,fixed=TRUE)
+  SEXO <- gsub("f","Femenino",SEXO,fixed=TRUE)
+  SEXO <- gsub("g","General",SEXO,fixed=TRUE)
+ })
+
+save(violencia.intrafamiliar.edad, file="violencia_intrafamiliar_Edad(Sexo-Periodo).RData")
+
+##MES
+violencia.intrafamiliar.mes$PERIODO <- factor(substr(violencia.intrafamiliar.mes$.id,5,8), ordered=TRUE)
+violencia.intrafamiliar.mes$SEXO <- factor(substr(violencia.intrafamiliar.mes$.id,3,3))
+violencia.intrafamiliar.mes$.id <- NULL
+violencia.intrafamiliar.mes <- within(violencia.intrafamiliar.mes,{
+  SEXO <- gsub("m","Masculino",SEXO,fixed=TRUE)
+  SEXO <- gsub("f","Femenino",SEXO,fixed=TRUE)
+  SEXO <- gsub("g","General",SEXO,fixed=TRUE)
+ })
+
+save(violencia.intrafamiliar.mes, file="violencia_intrafamiliar_Mes(Sexo-Periodo).RData")
+```
+
+##Convertimos las variables a tipo nominal
+```{r Variable Nominal, echo=FALSE}
+
+#FUENTE
+violencia.intrafamiliar.fuente$ESTADO <- factor(violencia.intrafamiliar.fuente$ESTADO)
+violencia.intrafamiliar.fuente$SEXO <- factor(violencia.intrafamiliar.fuente$SEXO)
+
+save(violencia.intrafamiliar.fuente,file="violencia_Fuente_Limp.RData")
+
+#EDAD
+violencia.intrafamiliar.edad$ESTADO <- factor(violencia.intrafamiliar.edad$ESTADO)
+violencia.intrafamiliar.edad$SEXO <- factor(violencia.intrafamiliar.edad$SEXO)
+
+save(violencia.intrafamiliar.edad,file="violencia_Edad_Limp.RData")
+
+
+#MES
+violencia.intrafamiliar.mes$ESTADO <- factor(violencia.intrafamiliar.mes$ESTADO)
+violencia.intrafamiliar.mes$SEXO <- factor(violencia.intrafamiliar.mes$SEXO)
+
+save(violencia.intrafamiliar.mes,file="violencia_Mes_Limp.RData")
+
+```
+
