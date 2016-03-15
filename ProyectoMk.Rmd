@@ -1,0 +1,173 @@
+---
+title: "ProyectoMk"
+output: html_document
+---
+
+Karina Ibarra 136608, Daniela Ordoñez 136977, Andres Albores 131749
+
+#IntroducciÃ³n
+
+###Violencia intrafamiliar (plantamiento del problema)
+
+Violencia intrafamiliar es un tipo de abuso que puede incluir violencia fisica, violencia sexual, amenazas de violencia o abuso emocional. Su origen es debatido por muchos aunque se cree que las principales causas son falta de recursos econÃ³micos, el abuso del alcohol y la drogadicciÃ³n, asociados comÃºnmente con  la pobreza.
+
+Fuente:
+http://www.violenciaenlafamilia.conapo.gob.mx/en/Violencia_Familiar/Violencia_en_la_Familia
+
+### Base de datos utilizada y descripcion de datos
+
+Los datos en los que nos basamos para nuestra investigaciÃ³n se obtuvieron de la DirecciÃ³n General de Epidemiologia de la Secretaria de Salud durante el perido de 2003 a 2014
+
+La informaciÃ³n esta dividida en:
+
+  -Casos reportados por fuentes: muestra el nÃºmero total de victimas por entidad federativa, reportado por las principales instituciones de salud.
+
+  -Casos por grupo de Edad: Presenta el nÃºmero total de victimas por entidad federativa, reportado para los grupos de edad establecidos.
+
+  -Casos de ocurrencia por mes: Presenta el nÃºmero total de victimas, por entidad federativa, reportado por mes.
+
+Asimismo, para cada uno de estos tres grandes grupos la informaciÃ³n se divide en tres categorias segÃºn gÃ©nero: Femenino, Masculino y ambos.
+
+**Nota:** Las categorias utilizadas para cada uno de los tres grandes grupos se presentan en el diccionario adjunto. 
+
+### Del Presente Documento
+En este documento se presenta una anÃ¡lisis de los casos presentados de violencia domestica,durante el periodo 2003-2014, basado en los datos registrados por la DirecciÃ³n General de EpidemiologÃ�a de la Secretaria de Salud. En  este se presenta, en una primera parte los problemas que se plantean para ser resueltos mediante el anÃ¡lisis; posteriormente se describe cÃ³mo es que se han obtenido los datos y con quÃ© medios se ha realizado la obtenciÃ³n de los mismas,asimismo, se realiza una breve descripciÃ³n de los datos y con base a esta se define el alcance y lÃ�mite de los datos; ulteriormente se transforman los datos obtenidos a formatos que permitan una mejor manipulaciÃ³n de los mismos y faciliten su analisis; en seguida se realizan pruebas de calidad sobre los datos de transformados;procedemos despuÃ©s a realizar el anÃ¡lisis exploratorio de los datos con el objetivo de resolver los problemas que se plantearon en un inicio y , finalmente, se se presentan las conclusiones para el trabajo realizado.
+
+#DefiniciÃ³n del Problema
+
+En el presente documento nos proponemos identificar cuÃ¡les son las Ã©pocas en que se debe prestar mayor atenciÃ³n al fenÃ³meno, cuÃ¡l es la tendencia del fenÃ³meno, cuÃ¡les son las instituciones que atienden un mayor nÃºmero de casos, quÃ© entidades y quÃ© grupos de edad y quÃ© sexo son mÃ¡s vulnerables al fenÃ³meno para mejorar el apoyo que se brinda a las vÃ�ctimas y las acciones preventivas que se toman en cada estado.
+
+#ObtenciÃ³n de datos
+
+http://www.epidemiologia.salud.gob.mx/anuario/html/anuarios.html
+
+### De los Recursos Utilizados
+
+Los datos empleados para el anÃ¡lisis fueron obtenidos de la pagina http://www.epidemiologia.salud.gob.mx/anuario/html/anuarios.html, la informaciÃ³n fue obtenida en formato pdf y transformada mediante el programa "Tabula" a formato csv para facilitar el anÃ¡lisis (para mayor informaciÃ³n sobre el programa visite http://tabula.technology/). El anÃ¡lisis de los datos se realizÃ³ en "RStudio", la informaciÃ³n tÃ©cnica de este Ãºltimo se presenta a continuaciÃ³n:
+
+
+```{r Directorio}
+directorio <- "C:/Users/Andres/OneDrive/Tenth Semester/Estadística Aplicada I/GitHub/EA1"
+setwd(directorio)
+knitr::opts_knit$set(root.dir = directorio)
+```
+
+```{r Informacion Session, echo=FALSE}
+sessionInfo()
+```
+
+## Realizamos la lectura de los datos
+
+```{r LecturaValores, echo=FALSE}
+
+library(plyr)
+###FUENTE
+violencia.fuente <- NULL 
+titulos.fuente <- NULL
+for (i in 1:12){ 
+violencia.fuente[[i]] <- read.csv(paste("./Datos/BrutosCSV/Fuente/FuenteFem",i+2002,".csv",  sep = "" ), stringsAsFactors = FALSE)
+titulos.fuente[i] <- paste("FuenteFem",i+2002,sep="")
+}
+
+for (i in 1:12){
+violencia.fuente[[i]] <- read.csv(paste("./Datos/BrutosCSV/Fuente/FuenteGen",i+2002,".csv",sep=""),stringsAsFactors=FALSE)
+titulos.fuente[i] <- paste("FuenteGen",i+2002,sep="")
+}
+
+for (i in 1:12){
+violencia.fuente[[i]] <- read.csv(paste("./Datos/BrutosCSV/Fuente/FuenteMasc",i+2002,".csv",sep=""),stringsAsFactors=FALSE)
+titulos.fuente[i] <- paste("FuenteMasc",i+2002,sep="")
+}
+names(violencia.fuente) <- titulos.fuente
+
+###EDAD
+violencia.edad <- NULL
+titulos.edad <- NULL
+for (i in 1:12){
+violencia.edad[[i]] <- read.csv(paste("./Datos/BrutosCSV/Grupo/GrupoFem",i+2002,".csv",sep=""),stringsAsFactors=FALSE)
+titulos.edad[i] <- paste("GrupoFem",i+2002,sep="")
+}
+
+for (i in 1:12){
+violencia.edad[[i]] <- read.csv(paste("./Datos/BrutosCSV/Grupo/GrupoGen",i+2002,".csv",sep=""),stringsAsFactors=FALSE)
+titulos.edad[i] <- paste("GrupoGen",i+2002,sep="")
+}
+
+for (i in 1:12){
+violencia.edad[[i]] <- read.csv(paste("./Datos/BrutosCSV/Grupo/GrupoMasc",i+2002,".csv",sep=""),stringsAsFactors=FALSE)
+titulos.edad[i] <- paste("GrupoMasc",i+2002,sep="")
+}
+names(violencia.edad) <- titulos.edad
+
+###MES
+violencia.mes <- NULL 
+titulos.mes <- NULL
+for (i in 1:12){ 
+violencia.mes[[i]] <- read.csv(paste("./Datos/BrutosCSV/Mes/MesFem",i+2002,".csv",  sep = "" ), stringsAsFactors = FALSE)
+titulos.mes[i] <- paste("GrupoFem",i+2002,sep="")
+  }
+
+for (i in 1:12){
+violencia.mes[[i]] <- read.csv(paste("./Datos/BrutosCSV/Mes/MesGen",i+2002,".csv",sep=""),stringsAsFactors=FALSE)
+titulos.mes[i] <- paste("GrupoGen",i+2002,sep="")
+}
+
+for (i in 1:12){
+violencia.mes[[i]] <- read.csv(paste("./Datos/BrutosCSV/Mes/MesMasc",i+2002,".csv",sep=""),stringsAsFactors=FALSE)
+titulos.mes[i] <- paste("GrupoMasc",i+2002,sep="")
+}
+names(violencia.mes) <- titulos.mes
+```
+
+## Limpieza de datos
+
+```{r Edicion}
+##FUENTE
+for (i in 1:33){ 
+names(violencia.fuente[[i]]) <-toupper(names(violencia.fuente[[i]]))
+}
+
+for (i in 1:33){ 
+names(violencia.fuente[[i]]) <-gsub("SEDEMAR","SEMAR",names(violencia.fuente[[i]]))
+}
+
+for (i in 1:33){ 
+names(violencia.fuente[[i]]) <-gsub("SALUD","SSA",names(violencia.fuente[[i]]))
+}
+
+##EDAD
+for (i in 1:33){ 
+names(violencia.edad[[i]]) <- c("Estado","Menor a 1","1 a 4","5 a 9", "10 a 14","15 a 19", "20 a 24","25 a 44", "45 a 49","50 a 59","60 a 64","65 o Mas","Desconocida")
+}
+for (i in 1:33){ 
+names(violencia.edad[[i]]) <-toupper(names(violencia.edad[[i]]))
+}
+
+##MES
+for (i in 1:33){ 
+names(violencia.mes[[i]]) <-toupper(names(violencia.mes[[i]]))
+}
+```
+
+##Guardamos la informacion en 3 grupos de DATA.
+
+````{r SaveData}
+##FUENTE
+violencia.intrafamiliar.fuente <- ldply(violencia.fuente,data.frame)
+save(violencia.intrafamiliar.fuente, file="violencia_intrafamiliar_Fuente.RData")
+
+##EDAD
+violencia.intrafamiliar.edad <- ldply(violencia.edad,data.frame)
+save(violencia.intrafamiliar.edad, file="violencia_intrafamiliar_Edad.RData")
+
+##MES
+violencia.intrafamiliar.mes <- ldply(violencia.mes,data.frame)
+save(violencia.intrafamiliar.mes, file="violencia_intrafamiliar_Mes.RData")
+```
+
+##Se consolido la informacion en 3 grupos: violencia.intrafamiliar.fuente, violencia.intrafamiliar.grupo, violencia.intrafamiliar.mes. A continuacion se presenta un extracto de cada uno de ellos:
+
+*Reporte de casos de violencia Mellitus(tipo 2) por Fuente/Institucion*
+```{r, echo=FALSE}
+head(violencia.intrafamiliar.fuente)
+```
