@@ -31,11 +31,11 @@ Asimismo, para cada uno de estos tres grandes grupos la informaciÃ³n se divide
 **Nota:** Las categorias utilizadas para cada uno de los tres grandes grupos se presentan en el diccionario adjunto. 
 
 ### Del Presente Documento
-En este documento se presenta una anÃ¡lisis de los casos presentados de violencia domestica,durante el periodo 2003-2014, basado en los datos registrados por la DirecciÃ³n General de EpidemiologÃ�a de la Secretaria de Salud. En  este se presenta, en una primera parte los problemas que se plantean para ser resueltos mediante el anÃ¡lisis; posteriormente se describe cÃ³mo es que se han obtenido los datos y con quÃ© medios se ha realizado la obtenciÃ³n de los mismas,asimismo, se realiza una breve descripciÃ³n de los datos y con base a esta se define el alcance y lÃ�mite de los datos; ulteriormente se transforman los datos obtenidos a formatos que permitan una mejor manipulaciÃ³n de los mismos y faciliten su analisis; en seguida se realizan pruebas de calidad sobre los datos de transformados;procedemos despuÃ©s a realizar el anÃ¡lisis exploratorio de los datos con el objetivo de resolver los problemas que se plantearon en un inicio y , finalmente, se se presentan las conclusiones para el trabajo realizado.
+En este documento se presenta una anÃ¡lisis de los casos presentados de violencia domestica,durante el periodo 2003-2014, basado en los datos registrados por la DirecciÃ³n General de EpidemiologÃ?a de la Secretaria de Salud. En  este se presenta, en una primera parte los problemas que se plantean para ser resueltos mediante el anÃ¡lisis; posteriormente se describe cÃ³mo es que se han obtenido los datos y con quÃ© medios se ha realizado la obtenciÃ³n de los mismas,asimismo, se realiza una breve descripciÃ³n de los datos y con base a esta se define el alcance y lÃ?mite de los datos; ulteriormente se transforman los datos obtenidos a formatos que permitan una mejor manipulaciÃ³n de los mismos y faciliten su analisis; en seguida se realizan pruebas de calidad sobre los datos de transformados;procedemos despuÃ©s a realizar el anÃ¡lisis exploratorio de los datos con el objetivo de resolver los problemas que se plantearon en un inicio y , finalmente, se se presentan las conclusiones para el trabajo realizado.
 
 #DefiniciÃ³n del Problema
 
-En el presente documento nos proponemos identificar cuÃ¡les son las Ã©pocas en que se debe prestar mayor atenciÃ³n al fenÃ³meno, cuÃ¡l es la tendencia del fenÃ³meno, cuÃ¡les son las instituciones que atienden un mayor nÃºmero de casos, quÃ© entidades y quÃ© grupos de edad y quÃ© sexo son mÃ¡s vulnerables al fenÃ³meno para mejorar el apoyo que se brinda a las vÃ�ctimas y las acciones preventivas que se toman en cada estado.
+En el presente documento nos proponemos identificar cuÃ¡les son las Ã©pocas en que se debe prestar mayor atenciÃ³n al fenÃ³meno, cuÃ¡l es la tendencia del fenÃ³meno, cuÃ¡les son las instituciones que atienden un mayor nÃºmero de casos, quÃ© entidades y quÃ© grupos de edad y quÃ© sexo son mÃ¡s vulnerables al fenÃ³meno para mejorar el apoyo que se brinda a las vÃ?ctimas y las acciones preventivas que se toman en cada estado.
 
 #ObtenciÃ³n de datos
 
@@ -123,28 +123,28 @@ names(violencia.mes) <- titulos.mes
 
 ```{r Edicion}
 ##FUENTE
-for (i in 1:33){ 
+for (i in 1:36){ 
 names(violencia.fuente[[i]]) <-toupper(names(violencia.fuente[[i]]))
 }
 
-for (i in 1:33){ 
+for (i in 1:36){ 
 names(violencia.fuente[[i]]) <-gsub("SEDEMAR","SEMAR",names(violencia.fuente[[i]]))
 }
 
-for (i in 1:33){ 
+for (i in 1:36){ 
 names(violencia.fuente[[i]]) <-gsub("SALUD","SSA",names(violencia.fuente[[i]]))
 }
 
 ##EDAD
-for (i in 1:33){ 
+for (i in 1:36){ 
 names(violencia.edad[[i]]) <- c("Estado","Menor a 1","1 a 4","5 a 9", "10 a 14","15 a 19", "20 a 24","25 a 44", "45 a 49","50 a 59","60 a 64","65 o Mas","Desconocida")
 }
-for (i in 1:33){ 
+for (i in 1:36){ 
 names(violencia.edad[[i]]) <-toupper(names(violencia.edad[[i]]))
 }
 
 ##MES
-for (i in 1:33){ 
+for (i in 1:36){ 
 names(violencia.mes[[i]]) <-toupper(names(violencia.mes[[i]]))
 }
 ```
@@ -365,4 +365,39 @@ violencia.intrafamiliar.edad <- within(violencia.intrafamiliar.edad,{
   DESCONOCIDA <- as.numeric(DESCONOCIDA)
 })
 
+```
+
+
+## Se introduce la columna TOTAL, que suma las columnas de cada fila.
+```{r ColumnaTotal}
+##FUENTE
+FUENTE<-violencia.intrafamiliar.fuente[,c(-1,-11,-12)]
+violencia.intrafamiliar.fuente$TOTAL <- as.numeric(rowSums(FUENTE, na.rm=TRUE))
+
+##MES
+MES<-violencia.intrafamiliar.mes[,c(-1,-14,-15)]
+violencia.intrafamiliar.mes$TOTAL <- as.numeric(rowSums(MES, na.rm=TRUE))
+
+##EDAD
+EDAD<-violencia.intrafamiliar.edad[,c(-1,-14,-15)]
+violencia.intrafamiliar.edad$TOTAL <- as.numeric(rowSums(EDAD, na.rm=TRUE))
+
+```
+
+
+## Con los cambios anteriores, la estructura de las 3 bases de datos queda de la siguiente manera.
+
+*Reporte de casos de violencia Mellitus(tipo 2) por Fuente/Institucion*
+```{r, echo=FALSE}
+str(violencia.intrafamiliar.fuente)
+```
+
+*Reporte de casos de violencia Mellitus(tipo 2) por Grupo de Edad*
+```{r, echo=FALSE}
+str(violencia.intrafamiliar.edad)
+```
+
+*Reporte de casos de violencia Mellitus(tipo 2) por Mes*
+```{r, echo=FALSE}
+str(violencia.intrafamiliar.mes)
 ```
