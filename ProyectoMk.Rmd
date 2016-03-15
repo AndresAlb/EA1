@@ -428,25 +428,14 @@ violencia.intrafamiliar.edad <- within(violencia.intrafamiliar.edad,{
 ##FUENTE
 FUENTE <- violencia.intrafamiliar.fuente[,c(-1,-11,-12,-13)]
 violencia.intrafamiliar.fuente$TOTAL <- apply(FUENTE,1,function(x) sum(x, na.rm=TRUE))
-#violencia.intrafamiliar.fuente$TOTAL <- as.numeric(rowSums(FUENTE, na.rm=TRUE))
-#violencia.intrafamiliar.fuente$TOTAL <- apply(FUENTE[,-10],2,function(x) sum(x,na.rm=TRUE))
 
 ##MES
 MES <- violencia.intrafamiliar.mes[,c(-1,-2,-15,-16)]
 violencia.intrafamiliar.mes$TOTAL <- apply(MES,1,function(x) sum(x,na.rm=TRUE))
-#violencia.intrafamiliar.mes$TOTAL <- as.numeric(rowSums(MES, na.rm=TRUE))
-#violencia.intrafamiliar.mes$TOTAL- apply(MES[,-10],2,function(x) sum(x,na.rm=TRUE))
-
 
 ##EDAD
 EDAD<-violencia.intrafamiliar.edad[,c(-1,-14,-15)]
 violencia.intrafamiliar.edad$TOTAL <- apply(EDAD,1,function(x) sum(x,na.rm=TRUE))
-#violencia.intrafamiliar.edad$TOTAL <- as.numeric(rowSums(EDAD, na.rm=TRUE))
-#violencia.intrafamiliar.edad$TOTAL <- apply(EDAD[,-10],2,function(x) sum(x,na.rm=TRUE))
-
-#
-#
-
 
 ```
 
@@ -467,3 +456,112 @@ str(violencia.intrafamiliar.edad)
 ```{r, echo=FALSE}
 str(violencia.intrafamiliar.mes)
 ```
+
+### Valores Faltantes
+
+Como primer control revisamos los valores faltantes en las tres bases de datos.
+
+*Registros Nulos violencia intrafamiliar Por Fuente/Institucion*
+```{r Registros Nulos Fuente, echo=FALSE}
+sum(is.na(violencia.intrafamiliar.fuente))
+```
+
+*Registros Nulos violencia intrafamiliar Por Edad*
+```{r Registros Nulos Edad, echo=FALSE}
+sum(is.na(violencia.intrafamiliar.edad))
+```
+
+*Registros Nulos violencia intrafamiliar Por Mes*
+```{r Registros Nulos Mes, echo=FALSE}
+sum(is.na(violencia.intrafamiliar.mes))
+```
+
+*Validacion Reporte Casos violencia  Por Fuente*
+```{r ValidacionFuente, echo=FALSE}
+mujeresf.periodo <-  aggregate(TOTAL~PERIODO,data=subset(violencia.intrafamiliar.fuente, SEXO=="Femenino"),sum) 
+colnames(mujeresf.periodo) <- c("Periodo","Femenino")
+
+hombresf.periodo <- aggregate(TOTAL~ PERIODO,data=subset(violencia.intrafamiliar.fuente, SEXO=="Masculino"),sum)
+colnames(hombresf.periodo) <- c("Periodo","Masculino")
+
+generalf.periodo <- aggregate(TOTAL~ PERIODO,data=subset(violencia.intrafamiliar.fuente, SEXO=="General"),sum)
+colnames(generalf.periodo) <- c("Periodo","General")
+
+#Se crearon 3 tablas con la suma de casos por periodo para los diferentes textos (femenino, masculino y general)
+verificacion.fuente <- merge(merge(generalf.periodo,hombresf.periodo),mujeresf.periodo)
+
+#Se juntan las 3 tablas en una sola
+verificacion.fuente$Validacion <- as.list(rowSums(subset(verificacion.fuente,TRUE,c(Masculino,Femenino)),na.rm=FALSE))
+
+#Se agrega una columna con la suma de la columna Femenino y Masculino
+save(verificacion.fuente,file="Validacion_Fuente.RData")
+
+#Se presenta la tabla creada
+verificacion.fuente
+```
+
+*Validacion Reporte Casos violencia  Por Mes*
+```{r VerificacionMes, echo=FALSE}
+mujeresm.periodo <-  aggregate(TOTAL~ PERIODO,data=subset(violencia.intrafamiliar.mes, SEXO=="Femenino"),sum)
+colnames(mujeresm.periodo) <- c("Periodo","Femenino")
+
+hombresm.periodo <- aggregate(TOTAL~ PERIODO,data=subset(violencia.intrafamiliar.mes, SEXO=="Masculino"),sum)
+colnames(hombresm.periodo) <- c("Periodo","Masculino")
+
+generalm.periodo <- aggregate(TOTAL~ PERIODO,data=subset(violencia.intrafamiliar.mes, SEXO=="General"),sum)
+colnames(generalm.periodo) <- c("Periodo","General")
+
+#Se crearon 3 tablas con la suma de casos por periodo para los diferentes textos (femenino, masculino y general)
+verificacion.mes <- merge(merge(generalm.periodo,hombresm.periodo),mujeresm.periodo)
+
+#Se juntan las 3 tablas en una sola
+verificacion.mes$Validacion <- as.list(rowSums(subset(verificacion.mes,TRUE,c(Masculino,Femenino)),na.rm=FALSE))
+
+#Se agrega una columna con la suma de la columna Femenino y Masculino
+save(verificacion.mes,file="Validacion_Mes.RData")
+
+#Se presenta la tabla creada
+verificacion.mes
+
+```
+
+*Validacion Reporte Casos violencia  Por Edad*
+
+```{r VerificacionEdad, echo=FALSE}
+
+mujerese.periodo <-  aggregate(TOTAL~ PERIODO,data=subset(violencia.intrafamiliar.edad, SEXO=="Femenino"),sum)
+colnames(mujerese.periodo) <- c("Periodo","Femenino")
+
+hombrese.periodo <- aggregate(TOTAL~ PERIODO,data=subset(violencia.intrafamiliar.edad, SEXO=="Masculino"),sum)
+colnames(hombrese.periodo) <- c("Periodo","Masculino")
+
+generale.periodo <- aggregate(TOTAL~ PERIODO,data=subset(violencia.intrafamiliar.edad, SEXO=="General"),sum)
+colnames(generale.periodo) <- c("Periodo","General")
+
+#Se crearon 3 tablas con la suma de casos por periodo para los diferentes textos (femenino, masculino y general)
+verificacion.edad <- merge(merge(generale.periodo,hombrese.periodo),mujerese.periodo)
+
+#Se juntan las 3 tablas en una sola
+verificacion.edad$Validacion <- as.list(rowSums(subset(verificacion.edad,TRUE,c(Masculino,Femenino)),na.rm=FALSE))
+
+#Se agrega una columna con la suma de la columna Femenino y Masculino
+save(verificacion.edad,file="Validacion_Edad.RData")
+
+#Se presenta la tabla creada
+verificacion.edad
+
+```
+
+### Resumen de los Datos
+```{r Resumen de los Datos, echo=FALSE}
+###FUENTE
+summary(violencia.intrafamiliar.fuente)
+
+###EDAD
+summary(violencia.intrafamiliar.edad)
+
+###MES
+summary(violencia.intrafamiliar.mes)
+```
+
+Aqui termina la limpieza principal de los datos
