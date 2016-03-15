@@ -362,6 +362,8 @@ violencia.intrafamiliar.edad <- within(violencia.intrafamiliar.edad, {
      SEMAR <- gsub("[S.R.,S/R,N.A.,N/A]{1,}","NA",SEMAR)
      Otras <- gsub("[S.R.,S/R,N.A.,N/A]{1,}","NA",Otras)
      })
+
+### BORRAR ESTE COMENTARIO
 ```
 
 
