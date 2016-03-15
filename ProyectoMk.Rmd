@@ -565,3 +565,51 @@ summary(violencia.intrafamiliar.mes)
 ```
 
 Aqui termina la limpieza principal de los datos
+
+```{r CambioFormato, echo=FALSE}
+library(reshape2)
+diabetes.melitus.estado <- 
+diabetes.melitus.fuente$TOTAL <- NULL
+diabetes.melitus.edad$TOTAL <- NULL
+diabetes.melitus.mes$TOTAL <- NULL
+
+
+#Cambiamos el formato a la base diabetes.melitus.fuente
+
+DIABETES.MELITUS.FUENTE <- melt(data=diabetes.melitus.fuente,id=c("ESTADO","PERIODO","SEXO"))
+names(DIABETES.MELITUS.FUENTE) <- c("ESTADO","PERIODO","SEXO","INSTITUCION","CASOS")
+
+save(DIABETES.MELITUS.FUENTE, file="Diabetes_FLargo_Fuente.RData")
+
+#Cambiamos el formato a la base diabetes.melitus.mes
+
+DIABETES.MELITUS.MES <- melt(data=diabetes.melitus.mes,id=c("ESTADO","PERIODO","SEXO"),na.rm=TRUE)
+names(DIABETES.MELITUS.MES) <- c("ESTADO","PERIODO","SEXO","MES","CASOS")
+
+save(DIABETES.MELITUS.MES, file="Diabetes_FLargo_Mes.RData")
+
+
+#Cambiamos el formato a la base diabetes.melitus.edad
+
+DIABETES.MELITUS.EDAD <- melt(data=diabetes.melitus.edad,id=c("ESTADO","PERIODO","SEXO"))
+names(DIABETES.MELITUS.EDAD) <- c("ESTADO","PERIODO","SEXO","EDAD","CASOS")
+
+save(DIABETES.MELITUS.EDAD,file="Diabetes_FLargo_Edad.RData")
+
+```
+
+
+```{r tipo de variables y extracto, echo=FALSE}
+##FUENTE
+str(DIABETES.MELITUS.FUENTE)
+head(DIABETES.MELITUS.FUENTE)
+
+##MES
+str(DIABETES.MELITUS.MES)
+head(DIABETES.MELITUS.MES)
+
+##EDAD
+str(DIABETES.MELITUS.EDAD)
+head(DIABETES.MELITUS.EDAD)
+```
+
