@@ -65,17 +65,17 @@ library(plyr)
 violencia.fuente <- NULL 
 titulos.fuente <- NULL
 for (i in 1:12){ 
-violencia.fuente[[i]] <- read.csv(paste("./Datos/BrutosCSV/Fuente/FueFem",i+2002,".csv", sep = "" ), stringsAsFactors = FALSE)
+violencia.fuente[[i]] <- read.csv(paste("./Datos/BrutosCSV/Fuente/FueFem",i+2002,".csv", sep = "" ), sep = ",", stringsAsFactors = FALSE)
 titulos.fuente[i] <- paste("FueFem",i+2002,sep="")
 }
 
 for (i in 1:12){
-violencia.fuente[[i+12]] <- read.csv(paste("./Datos/BrutosCSV/Fuente/FueGen",i+2002,".csv",sep=""),stringsAsFactors=FALSE)
+violencia.fuente[[i+12]] <- read.csv(paste("./Datos/BrutosCSV/Fuente/FueGen",i+2002,".csv",sep=""), sep = ",", stringsAsFactors=FALSE)
 titulos.fuente[i+12] <- paste("FueGen",i+2002,sep="")
 }
 
 for (i in 1:12){
-violencia.fuente[[i+24]] <- read.csv(paste("./Datos/BrutosCSV/Fuente/FueMas",i+2002,".csv",sep=""),stringsAsFactors=FALSE)
+violencia.fuente[[i+24]] <- read.csv(paste("./Datos/BrutosCSV/Fuente/FueMas",i+2002,".csv",sep=""), sep = ",", stringsAsFactors=FALSE)
 titulos.fuente[i+24] <- paste("FueMas",i+2002,sep="")
 }
 names(violencia.fuente) <- titulos.fuente

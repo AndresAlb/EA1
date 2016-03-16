@@ -1,8 +1,7 @@
-Estado,"","","","","","","","","",""
-"",Salud ,IMSS-Ord ,ISSSTE ,IMSS-Op ,DIF ,PEMEX ,SEDENA ,SEMAR ,Otras,""
+﻿Estado,Salud ,IMSS-Ord ,ISSSTE ,IMSS-Op ,DIF ,PEMEX ,SEDENA ,SEMAR ,Otras, Total
 Aguascalientes ,  31 ,  0 ,  1 ,S.R. ,  0 ,S.R. ,  0 ,S.R. ,  2 ,  34
 Baja California , 1 132 ,  9 ,  4 ,  4 ,S.R. ,S.R. ,  2 ,  1 ,  2 , 1 154
-Baja California Su ,  794 ,  0 ,  3 ,S.R. ,S.R. ,S.R. ,  0 ,  0 ,S.R. ,  797
+Baja California Sur ,  794 ,  0 ,  3 ,S.R. ,S.R. ,S.R. ,  0 ,  0 ,S.R. ,  797
 Campeche , 1 621 ,  0 ,  3 ,  3 ,  0 ,  0 ,  0 ,  1 ,  0 , 1 628
 Coahuila ,  85 ,  2 ,  3 ,  4 ,  11 ,S.R. ,  1 ,S.R. ,  6 ,  112
 Colima ,  336 ,  0 ,  0 ,S.R. ,  2 ,S.R. ,  0 ,  1 ,  1 ,  340
