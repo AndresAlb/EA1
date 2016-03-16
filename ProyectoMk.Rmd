@@ -665,7 +665,7 @@ ggplot(INSTITUCION.PERIODO,aes(x=INSTITUCION,y=CASOS,group=PERIODO,fill=INSTITUC
 
 ###Tendencia Interanual N??mero de incidentes de violencia intrafamiliar
 
-Buscando identificar la ??poca del a??o en que se registra un mayor n??mero de incidentes de alacr??n e identificar el comportamiento interanual que tiene el fen??meno se crea la siguiente tabla, ??sta muestra el n??mero total  de incidentes de alacr??n por cada a??o dentro del periodo de observaci??n; la tabla fue creada utilizando los datos generales, para cada uno de los periodos, sumando el n??mero de incidentes reportado para las diferentes entidades.
+Buscando identificar la ??poca del a??o en que se registra un mayor n??mero de incidentes de violencia domestica e identificar el comportamiento interanual que tiene el fen??meno se crea la siguiente tabla, ??sta muestra el n??mero total  de incidentes de violencia domestica por cada a??o dentro del periodo de observaci??n; la tabla fue creada utilizando los datos generales, para cada uno de los periodos, sumando el n??mero de incidentes reportado para las diferentes entidades.
 
 ```{r CreacionTablaAuxiliarMes, echo=FALSE}
 
