@@ -1,34 +1,34 @@
-Estado ,SALUD ,IMSS-ORD ,ISSSTE ,IMSS-OP ,DIF ,PEMEX ,SEDENA ,SEMAR ,Otras ,Total
-Aguascalientes ,76 ,0 ,0 ,N.A. ,0 ,N.A. ,0 ,N.A. ,3 ,79
-Baja California ,266 ,3 ,0 ,1 ,N.A. ,N.A. ,4 ,0 ,29 ,303
-Baja California Sur ,152 ,1 ,1 ,N.A. ,N.A. ,N.A. ,0 ,0 ,N.A. ,154
-Campeche ,745 ,0 ,0 ,1 ,0 ,0 ,0 ,0 ,0 ,746
-Coahuila ,59 ,0 ,4 ,22 ,0 ,N.A. ,0 ,N.A. ,24 ,109
-Colima ,99 ,0 ,1 ,N.A. ,0 ,N.A. ,0 ,0 ,0 ,100
-Chiapas ,130 ,0 ,20 ,26 ,N.A. ,0 ,2 ,0 ,2 ,180
-Chihuahua ,1 565 ,9 ,0 ,37 ,N.A. ,N.A. ,0 ,N.A. ,12 ,1 623
-Distrito Federal ,539 ,0 ,157 ,0 ,0 ,0 ,33 ,5 ,4 ,738
-Durango ,95 ,0 ,0 ,15 ,0 ,N.A. ,0 ,N.A. ,1 ,111
-Guanajuato ,1 065 ,0 ,0 ,0 ,N.A. ,10 ,9 ,N.A. ,10 ,1 094
-Guerrero ,297 ,0 ,3 ,3 ,N.A. ,N.A. ,2 ,0 ,N.A. ,305
-Hidalgo ,1 605 ,0 ,0 ,10 ,38 ,1 ,0 ,N.A. ,0 ,1 654
-Jalisco ,335 ,2 ,0 ,0 ,22 ,0 ,1 ,0 ,1 606 ,1 966
-México ,173 ,7 ,3 ,0 ,224 ,N.A. ,7 ,N.A. ,7 ,421
-Michoacán ,980 ,0 ,0 ,44 ,N.A. ,N.A. ,2 ,0 ,N.A. ,1 026
-Morelos ,135 ,2 ,1 ,0 ,N.A. ,N.A. ,0 ,N.A. ,N.A. ,138
-Nayarit ,762 ,1 ,0 ,17 ,25 ,N.A. ,0 ,0 ,5 ,810
-Nuevo León ,718 ,2 ,0 ,1 ,N.A. ,0 ,0 ,N.A. ,108 ,829
-Oaxaca ,679 ,0 ,11 ,65 ,42 ,4 ,1 ,1 ,2 ,805
-Puebla ,373 ,6 ,1 ,32 ,0 ,0 ,5 ,N.A. ,35 ,452
-Querétaro ,3 255 ,3 ,3 ,0 ,0 ,N.A. ,1 ,N.A. ,0 ,3 262
-Quintana Roo ,251 ,0 ,14 ,N.A. ,N.A. ,N.A. ,0 ,0 ,N.A. ,265
-San Luis Potosí ,104 ,5 ,0 ,11 ,N.A. ,0 ,0 ,N.A. ,11 ,131
-Sinaloa ,195 ,5 ,9 ,66 ,112 ,0 ,2 ,0 ,2 ,391
-Sonora ,165 ,0 ,0 ,0 ,N.A. ,N.A. ,1 ,0 ,6 ,172
-Tabasco ,442 ,0 ,4 ,N.A. ,N.A. ,0 ,0 ,0 ,6 ,452
-Tamaulipas ,44 ,0 ,1 ,5 ,2 ,1 ,2 ,0 ,0 ,55
-Tlaxcala ,158 ,0 ,0 ,0 ,0 ,N.A. ,0 ,N.A. ,0 ,158
-Veracruz ,246 ,1 ,6 ,43 ,2 ,2 ,6 ,0 ,N.A. ,306
-Yucatán ,956 ,4 ,0 ,41 ,0 ,N.A. ,0 ,0 ,1 ,1 002
-Zacatecas ,1 896 ,0 ,1 ,21 ,0 ,N.A. ,0 ,N.A. ,0 ,1 918
-TOTAL GLOBAL ,18 560 ,51 ,240 ,461 ,467 ,18 ,78 ,6 ,1 874 ,21 755
+﻿Estado ,Salud,IMSS-Ord,ISSSTE,IMSS-Op,DIF ,PEMEX ,SEDENA ,SEMAR ,Otras ,Total
+Aguascalientes ,31 ,0 ,0 ,S.R. ,0 ,S.R. ,0 ,S.R. ,1 ,32
+Baja California ,601 ,3 ,0 ,3 ,S.R. ,S.R. ,2 ,2 ,5 ,616
+Baja California Sur ,471 ,1 ,3 ,S.R. ,S.R. ,S.R. ,0 ,0 ,S.R. ,475
+Campeche ,1 252 ,1 ,0 ,8 ,0 ,0 ,1 ,1 ,0 ,1 263
+Coahuila ,73 ,2 ,0 ,3 ,49 ,S.R. ,3 ,S.R. ,2 ,132
+Colima ,261 ,0 ,0 ,S.R. ,6 ,S.R. ,1 ,0 ,1 ,269
+Chiapas ,1 698 ,1 ,23 ,12 ,S.R. ,0 ,0 ,0 ,3 ,1 737
+Chihuahua ,3 316 ,5 ,0 ,26 ,S.R. ,S.R. ,4 ,S.R. ,7 ,3 358
+Distrito Federal ,1 164 ,15 ,37 ,0 ,3 ,0 ,1 ,0 ,1 ,1 221
+Durango ,694 ,0 ,1 ,8 ,0 ,S.R. ,S.R. ,0 ,0 ,703
+Guanajuato ,11 820 ,9 ,2 ,0 ,S.R. ,12 ,4 ,S.R. ,8 ,11 855
+Guerrero ,2 769 ,2 ,6 ,63 ,S.R. ,S.R. ,0 ,0 ,0 ,2 840
+Hidalgo ,1 857 ,0 ,0 ,7 ,33 ,0 ,0 ,S.R. ,0 ,1 897
+Jalisco ,2 300 ,8 ,0 ,0 ,14 ,0 ,0 ,0 ,1 041 ,3 363
+México ,7 345 ,3 ,6 ,6 ,471 ,S.R. ,8 ,S.R. ,6 ,7 845
+Michoacán ,5 129 ,1 ,5 ,16 ,S.R. ,S.R. ,0 ,5 ,S.R. ,5 156
+Morelos ,626 ,0 ,0 ,0 ,S.R. ,S.R. ,0 ,S.R. ,S.R. ,626
+Nayarit ,410 ,0 ,2 ,3 ,7 ,S.R. ,0 ,0 ,0 ,422
+Nuevo León ,1 952 ,2 ,0 ,0 ,S.R. ,0 ,1 ,S.R. ,120 ,2 075
+Oaxaca ,470 ,0 ,1 ,46 ,0 ,0 ,0 ,3 ,2 ,522
+Puebla ,1 479 ,2 ,1 ,22 ,0 ,1 ,2 ,S.R. ,6 ,1 513
+Querétaro ,3 739 ,0 ,1 ,0 ,0 ,S.R. ,0 ,S.R. ,5 ,3 745
+Quintana Roo ,1 319 ,0 ,5 ,S.R. ,S.R. ,S.R. ,0 ,0 ,0 ,1 324
+San Luis Potosí ,863 ,2 ,0 ,10 ,S.R. ,0 ,0 ,S.R. ,6 ,881
+Sinaloa ,104 ,0 ,1 ,1 ,124 ,0 ,0 ,0 ,4 ,234
+Sonora ,549 ,0 ,0 ,0 ,S.R. ,S.R. ,1 ,7 ,10 ,567
+Tabasco ,1 552 ,0 ,0 ,S.R. ,S.R. ,0 ,0 ,0 ,3 ,1 555
+Tamaulipas ,1 420 ,3 ,0 ,1 ,0 ,0 ,1 ,0 ,1 ,1 426
+Tlaxcala ,847 ,0 ,0 ,0 ,0 ,S.R. ,0 ,S.R. ,0 ,847
+Veracruz ,3 284 ,2 ,1 ,22 ,0 ,3 ,0 ,1 ,0 ,3 313
+Yucatán ,2 374 ,0 ,0 ,23 ,0 ,S.R. ,0 ,0 ,1 ,2 398
+Zacatecas ,1 193 ,0 ,4 ,11 ,0 ,S.R. ,0 ,S.R. ,1 ,1 209
+TOTAL GLOBAL ,62 962 ,62 ,99 ,291 ,707 ,16 ,29 ,19 ,1 234 ,65 419
