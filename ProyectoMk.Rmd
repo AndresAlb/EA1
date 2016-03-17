@@ -1,5 +1,5 @@
 ---
-title: "ProyectoMk"
+title: Reporte técnico
 output: html_document
 ---
 
@@ -65,17 +65,17 @@ library(plyr)
 violencia.fuente <- NULL 
 titulos.fuente <- NULL
 for (i in 1:12){ 
-violencia.fuente[[i]] <- read.csv(paste("./Datos/BrutosCSV/Fuente/FueFem",i+2002,".csv", sep = "" ), sep = ",", stringsAsFactors = FALSE)
+violencia.fuente[[i]] <- read.csv(paste("./Datos/BrutosCSV/Fuente/FueFem",i+2002,".csv", sep = "" ), sep = ",", stringsAsFactors = FALSE, encoding = "UTF-8")
 titulos.fuente[i] <- paste("FueFem",i+2002,sep="")
 }
 
 for (i in 1:12){
-violencia.fuente[[i+12]] <- read.csv(paste("./Datos/BrutosCSV/Fuente/FueGen",i+2002,".csv",sep=""), sep = ",", stringsAsFactors=FALSE)
+violencia.fuente[[i+12]] <- read.csv(paste("./Datos/BrutosCSV/Fuente/FueGen",i+2002,".csv",sep=""), sep = ",", stringsAsFactors=FALSE, encoding = "UTF-8")
 titulos.fuente[i+12] <- paste("FueGen",i+2002,sep="")
 }
 
 for (i in 1:12){
-violencia.fuente[[i+24]] <- read.csv(paste("./Datos/BrutosCSV/Fuente/FueMas",i+2002,".csv",sep=""), sep = ",", stringsAsFactors=FALSE)
+violencia.fuente[[i+24]] <- read.csv(paste("./Datos/BrutosCSV/Fuente/FueMas",i+2002,".csv",sep=""), sep = ",", stringsAsFactors=FALSE, encoding = "UTF-8")
 titulos.fuente[i+24] <- paste("FueMas",i+2002,sep="")
 }
 names(violencia.fuente) <- titulos.fuente
@@ -123,28 +123,28 @@ names(violencia.mes) <- titulos.mes
 
 ```{r Edicion}
 ##FUENTE
-for (i in 1:33){ 
+for (i in 1:36){ 
 names(violencia.fuente[[i]]) <-toupper(names(violencia.fuente[[i]]))
 }
 
-for (i in 1:33){ 
+for (i in 1:36){ 
 names(violencia.fuente[[i]]) <-gsub("SEDEMAR","SEMAR",names(violencia.fuente[[i]]))
 }
 
-for (i in 1:33){ 
+for (i in 1:36){ 
 names(violencia.fuente[[i]]) <-gsub("SALUD","SSA",names(violencia.fuente[[i]]))
 }
 
 ##EDAD
-for (i in 1:33){ 
+for (i in 1:36){ 
 names(violencia.edad[[i]]) <- c("Estado","Menor a 1","1 a 4","5 a 9", "10 a 14","15 a 19", "20 a 24","25 a 44", "45 a 49","50 a 59","60 a 64","65 o Mas","Desconocida")
 }
-for (i in 1:33){ 
+for (i in 1:36){ 
 names(violencia.edad[[i]]) <-toupper(names(violencia.edad[[i]]))
 }
 
 ##MES
-for (i in 1:33){ 
+for (i in 1:36){ 
 names(violencia.mes[[i]]) <-toupper(names(violencia.mes[[i]]))
 }
 ```
@@ -737,3 +737,12 @@ color.prom <- c(NA,NA,NA,NA, "withcolor", NA, NA,NA,NA,NA,NA,NA)
 
 ggplot(media.mes.1,aes(x=Mes,y=No.incidentes,fill=color.prom))+geom_bar(stat="identity")+theme_bw()+theme(strip.text = element_text(face = "bold"),strip.background = element_blank(),axis.text = element_text(colour=grey(.50)),axis.text.x = element_text(size=15, angle=45,vjust=.5),axis.text.y = element_text(size=15, angle=45),plot.title = element_text(size =20),axis.ticks=element_line(colour=grey(.80)),axis.title = element_text(colour=grey(.45)))+labs(title="Promedio Mensual de casos de violencia intrafamiliar",x="Mes",y="Numero de incidentes")+theme(legend.position="none")+xlim("ENE","FEB","MAR","ABR","MAY","JUN","JUL","AGO","SEP","OCT","NOV","DIC")
 ```
+
+```{r ChisteSecreto, echo = FALSE}
+
+# What's purple, round and doesn't go to work?
+
+# A non-abelian grape (it doesn't commute)
+
+```
+
