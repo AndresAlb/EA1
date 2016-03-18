@@ -836,7 +836,7 @@ Gr??ficamente los datos generados en la anterior tabla se muestran a continuaci?
 
 ```{r CasosHombresMujeres, echo=FALSE}
 
-ggplot(PROM.SEXO.MENS,aes(x=Mes,y=value,group=Sexo))+geom_line(aes(colour=Sexo),linetype=2, size=1)+geom_point(aes(colour=Sexo),size=3)+theme_bw()+theme(strip.background = element_blank(),axis.text = element_text(colour=grey(.50)),axis.text.x = element_text(size=12),axis.text.y = element_text(size=15, angle=45),plot.title = element_text(size =20),axis.ticks=element_line(colour=grey(.80)),axis.title = element_text(colour=grey(.45)))+labs(title="Evolucion anual del numero de violencia intrafamiliars, en promedio, de hombre y mujeres",x="Mes",y="Numero de violencia intrafamiliars")
+ggplot(PROM.SEXO.MENS,aes(x=Mes,y=value,group=Sexo))+geom_line(aes(colour=Sexo),linetype=2, size=1)+geom_point(aes(colour=Sexo),size=3)+theme_bw()+theme(strip.background = element_blank(),axis.text = element_text(colour=grey(.50)),axis.text.x = element_text(size=12),axis.text.y = element_text(size=15, angle=45),plot.title = element_text(size =20),axis.ticks=element_line(colour=grey(.80)),axis.title = element_text(colour=grey(.45)))+labs(title="Evolucion anual del numero de violencia intrafamiliar, en promedio, de hombre y mujeres",x="Mes",y="Numero de violencia intrafamiliar")
 
 ```
 
@@ -922,7 +922,7 @@ for(i in 1:11){
 EDAD.violencia.SUMFEM<- ldply(edad.violencia.fem,data.frame)
 EDAD.violencia.SUMMAS<- ldply(edad.violencia.mas,data.frame)
 
-#A??anidmos la variable periodo y sexo a la tabla generada
+#A??adidmos la variable periodo y sexo a la tabla generada
 EDAD.violencia.SUMFEM$Periodo<- factor(periodo)
 EDAD.violencia.SUMMAS$Periodo<- factor(periodo)
 
@@ -985,7 +985,7 @@ save(Media.EdadFem, file="Numero Promedio Anual violencia Mujer.RData")
 Media.EdadFem
 
 ```
-A partir de las dos ??ltimas dos tablas generadas se generan las siguientes gr??ficas, mostrando en ellas el n??mero total de violencia intrafamiliars registradas por grupo de edad para cada a??o dentro del periodo de observaci??n y, como referencia, el promedio de violencia intrafamiliars anual obtenido; tanto para el g??nero masculino, como para el g??nero femenino.  
+A partir de las dos ??ltimas dos tablas generadas se generan las siguientes gr??ficas, mostrando en ellas el n??mero total de violencia intrafamiliar registradas por grupo de edad para cada a??o dentro del periodo de observaci??n y, como referencia, el promedio de violencia intrafamiliars anual obtenido; tanto para el g??nero masculino, como para el g??nero femenino.  
 
 ```{r Piramide,echo=FALSE}
 
@@ -1005,15 +1005,15 @@ suma.fem <- subset(EDAD.violencia.SUMA, SEXO=="Femenino")
 ggplot(suma.mas,aes(x=Grupo.Edad ,y=violencia.Total.Periodo, fill="pink"))+geom_bar(data=suma.fem,stat="identity")+geom_hline(data=Media.EdadFem,aes(yintercept=Media.Agregada,group=PERIODO),linetype=2)+facet_wrap(~PERIODO,ncol=4)+theme_bw()+theme(strip.background = element_blank(),axis.text = element_text(colour=grey(.50)),axis.text.x = element_text(angle = 45,vjust=1,hjust=1,size=15),axis.text.y = element_text(size=15),plot.title = element_text(size =20),axis.ticks=element_line(colour=grey(.80)),axis.title = element_text(colour=grey(.45)))+labs(title="Numero de Casos por Grupo de Edad Anual vs Promedio Anual (Mujeres)",x="Grupo de Edad",y="No. Total de violencia intrafamiliars")+theme(legend.position="none")+coord_flip()+scale_fill_manual(values = c("pink"))+scale_y_continuous(breaks= mybreaks)
 ```
 
-Las ??ltimas tres gr??ficas muestran, claramente, el grupo de edad con mayor vulnerabilidad a violencia intrafamiliars de alacranes es el abarcado entre los 25 y 40 a??os de edad.
+Las ??ltimas tres gr??ficas muestran, claramente, el grupo de edad con mayor vulnerabilidad a violencia intrafamiliar de alacranes es el abarcado entre los 25 y 40 a??os de edad.
 
 ####Grupo de Mayor Vulnerabilidad: 25 a 44 a??os
-Para comprobar nuestra hip??tesis de considerar al grupo abarcado entre los 25 y 40 a??os de edad como el grupo vulnerable se genera a continuaci??n una tabla que muestra el n??mero de violencia intrafamiliars promedio registrado por grupo de edad, datos que es generado a partir de los datos generales.
+Para comprobar nuestra hip??tesis de considerar al grupo abarcado entre los 25 y 40 a??os de edad como el grupo vulnerable se genera a continuaci??n una tabla que muestra el n??mero de violencia intrafamiliar promedio registrado por grupo de edad, datos que es generado a partir de los datos generales.
 
 ```{r Medias Grupo de Edad, echo=FALSE}
 MEDIA.GRUPOS <- NULL
 for(i in 1:12){
-  media.edad <- subset(violencia.ALACRAN.EDAD, SEXO=="General" & Grupo.de.Edad== grupos[[i]])
+  media.edad <- subset(violencia.intrafamiliar.EDAD, SEXO=="General" & Grupo.de.Edad== grupos[[i]])
   MEDIA.GRUPOS[[i]]<-c(mean(media.edad$no.Casos),grupos[[i]])
 }
 
@@ -1034,7 +1034,7 @@ color.prom <- c(NA,NA,NA,NA,NA,NA,"withcolor",NA,NA,NA,NA,NA)
 ggplot(MEDIA.GRUPOS,aes(x=Grupo.de.Edad,y=Promedio.Casos,fill=color.prom))+geom_bar(stat="identity")+labs(title="Promedio Mensual de casos de violencia",x="Grupo de Edad",y="Numero de Casos")+theme_bw()+theme(strip.text = element_text(face = "bold"),strip.background = element_blank(),axis.text = element_text(colour=grey(.50)),axis.text.x = element_text(size=15, angle=45, vjust=.5),axis.text.y = element_text(size=15, angle=45),plot.title = element_text(size =20),axis.ticks=element_line(colour=grey(.80)),axis.title = element_text(colour=grey(.45)))+theme(legend.position="none")
 ```
 
-Ahora, para analizar el fen??meno de violencia intrafamiliars sobre el grupo vulnerable , 25 a 44 a??os, se realiza una tabla generando por estado el n??mero promedio de violencia intrafamiliars para cada Estado
+Ahora, para analizar el fen??meno de violencia intrafamiliar sobre el grupo vulnerable , 25 a 44 a??os, se realiza una tabla generando por estado el n??mero promedio de violencia intrafamiliar para cada Estado
 
 ```{r TablaMediaEstEdad,echo=FALSE}
 library(reshape)
@@ -1051,7 +1051,7 @@ save(EDAD.PROM.VULNERABLE, file="Promedios Grupo de Edad 25 a 44 anos.RData")
 EDAD.PROM.VULNERABLE
 ```
 
-Gr??ficamente el fen??meno del n??mero promedio de violencia intrafamiliars de alacr??n por entidad se muestra como sigue:
+Gr??ficamente el fen??meno del n??mero promedio de violencia intrafamiliar por entidad se muestra como sigue:
 
 ```{r PromGrupoVulnerable, echo=FALSE}
 
@@ -1059,8 +1059,8 @@ ggplot(EDAD.PROM.VULNERABLE,aes(x=reorder(ESTADO,value),y=value,fill=Grupo.de.Ed
 
 ```
 
-###Animaci??n N??mero Total de violencia intrafamiliars por Grupo de Edad 
-Finalmente si se quiere observar el comportamiento del n??mero total de violencia intrafamiliars por grupo de edad ,reportado para hombres y mujeres, para las 16 entidades con mayor n??mero de violencia intrafamiliars, puede observarse la siguiente animaci??n https://www.dropbox.com/lightbox/home/Actuar%C3%ADa/Estad%C3%ADstica . En esta animaci??n cada escal??n representa un grupo de edad, ordenados en orden ascendiente, la pir??mide azul respresenta el n??mero total de violencia intrafamiliars por grupo de edad para hombres, mientras que para mujeres utiliza el color rosa.
+###Animaci??n N??mero Total de violencia intrafamiliar por Grupo de Edad 
+Finalmente si se quiere observar el comportamiento del n??mero total de violencia intrafamiliar por grupo de edad ,reportado para hombres y mujeres, para las 16 entidades con mayor n??mero de violencia intrafamiliar, puede observarse la siguiente animaci??n https://www.dropbox.com/lightbox/home/Actuar%C3%ADa/Estad%C3%ADstica . En esta animaci??n cada escal??n representa un grupo de edad, ordenados en orden ascendiente, la pir??mide azul respresenta el n??mero total de violencia intrafamiliars por grupo de edad para hombres, mientras que para mujeres utiliza el color rosa.
 
 ```{r Graficas Gif, echo=FALSE }
 entidades <- c("Aguascalientes", "Colima", "Durango", "Guanajuato","Guerrero", "Jalisco", "Mexico", "Michoacan", "Morelos","Nayarit", "Oaxaca", "Puebla", "Queretaro", "Sinaloa", "Sonora", "Zacatecas")
@@ -1135,9 +1135,9 @@ ggplot(estados.mayor.ocurrencia, aes(x = Grupo.de.Edad, y = No.Casos,fill=Grupo.
 
 ```
 
-###Estado Con Mayor N??mero de violencia intrafamiliars
+###Estado Con Mayor N??mero de violencia intrafamiliar
 
-Hasta ahora,las gr??ficas y tablas en que se ha involucrado a la variable entidad, muestran al estado de Jalisco como un potencial candidato a ser la entidad con un mayor n??mero de violencia intrafamiliars de alcar??n reportado, para comprobar si esto es as?? se genera la siguiente tabla. En esta tabla se presenta el n??mero promedio de violencia intrafamiliars totales por estado para el periodo de observaci??n, se genera con los datos la base violencia intrafamiliar.ALACRAN.FUENTE.
+Hasta ahora,las gr??ficas y tablas en que se ha involucrado a la variable entidad, muestran al estado de Jalisco como un potencial candidato a ser la entidad con un mayor n??mero de violencia intrafamiliar reportado, para comprobar si esto es as?? se genera la siguiente tabla. En esta tabla se presenta el n??mero promedio de violencia intrafamiliar totales por estado para el periodo de observaci??n, se genera con los datos la base violencia.intrafamiliar.FUENTE.
 
 ```{r Medias Estado, echo=FALSE}
 MEDIA.ENTIDAD <- NULL
