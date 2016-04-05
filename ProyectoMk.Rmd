@@ -1,3 +1,4 @@
+
 ---
 title: Reporte técnico
 output: html_document
@@ -568,7 +569,7 @@ Aqui termina la limpieza principal de los datos
 
 ```{r CambioFormato, echo=FALSE}
 library(reshape2)
-violencia.intrafamiliar.estado <- 
+violencia.intrafamiliar.estado <- NULL
 violencia.intrafamiliar.fuente$TOTAL <- NULL
 violencia.intrafamiliar.edad$TOTAL <- NULL
 violencia.intrafamiliar.mes$TOTAL <- NULL
@@ -692,6 +693,8 @@ names(MES.PERIODO) <- c("Periodo","Mes","No.incidentes")
 
 save(MES.PERIODO, file="Tendencia Interanual.RData")
 
+MES.PERIODO.ORDENADO <- MES.PERIODO[order(MES.PERIODO$No.incidentes), ]
+
 MES.PERIODO
 ```
 
@@ -712,7 +715,7 @@ Considernado importante identificar la tendencia mensual del n??mero de incident
 
 #Creamos una tabla con las medias de cada mes
 
-media.mes.1 <- as.data.frame(sapply(mes.periodo[,2:13],mean))
+media.mes.1 <- as.data.frame(sapply(mes.periodo[,2:13], function(x) mean(x, na.rm = TRUE)))
 media.mes.1$Mes <- c("ENE","FEB","MAR","ABR","MAY","JUN","JUL","AGO","SEP","OCT","NOV","DIC")
 names(media.mes.1) <- c("No.incidentes","Mes")
 
@@ -734,7 +737,7 @@ Asimismo, utilizando la tabla generada que contiene el promedio de incidentes, m
 
 ```{r PromedioBarPlot, echo=FALSE}
 
-color.prom <- c(NA,NA,NA,NA, "withcolor", NA, NA,NA,NA,NA,NA,NA)
+color.prom <- c(NA,NA,NA,NA,NA,NA,NA,NA,NA,"withcolor",NA,NA)
 
 ggplot(media.mes.1,aes(x=Mes,y=No.incidentes,fill=color.prom))+geom_bar(stat="identity")+theme_bw()+theme(strip.text = element_text(face = "bold"),strip.background = element_blank(),axis.text = element_text(colour=grey(.50)),axis.text.x = element_text(size=15, angle=45,vjust=.5),axis.text.y = element_text(size=15, angle=45),plot.title = element_text(size =20),axis.ticks=element_line(colour=grey(.80)),axis.title = element_text(colour=grey(.45)))+labs(title="Promedio Mensual de casos de violencia intrafamiliar",x="Mes",y="Numero de incidentes")+theme(legend.position="none")+xlim("ENE","FEB","MAR","ABR","MAY","JUN","JUL","AGO","SEP","OCT","NOV","DIC")
 
@@ -748,30 +751,32 @@ Fijandonos en el mes de Mayo, veremos, en promedio, en que estado se presenta la
 
 ###Mes Con Mayor N??mero de Reporte Por violencia intrafamiliar: Mayo
 
-Para observar el fen??meno de violencia intrafamiliars en el mes de mayo generamos la siguiente tabla, misma que contiene el n??mero promedio de violencia intrafamiliars por entidad durante el periodo de observaci??n para el mes de mayo.
+Para observar el fen??meno de violencia intrafamiliares en el mes de octubre generamos la siguiente tabla, misma que contiene el n??mero promedio de violencia intrafamiliars por entidad durante el periodo de observaci??n para el mes de octubre
 
-```{r Promedios Mayo, echo=FALSE}
+```{r Promedios Octubre, echo=FALSE}
 
-library(reshape)
+library(reshape2)
 
-#Hacemos una tabla con el promedio de cada estado en el mes de mayo para el periodo de observacion (2003-2013)
+#Hacemos una tabla con el promedio de cada estado en el mes de octubre para el periodo de observacion (2003-2013)
 
-Estado.prom <- cast(subset(violencia.intrafamiliar.MES,Mes=="MAY" & Sexo=="General"), Mes~Estado, mean)
+ESTADO.OCTUBRE.PROM <- acast(subset(violencia.intrafamiliar.MES,MES=="OCT" & SEXO=="General"), MES~ESTADO, function (x) mean(x, na.rm = TRUE))
 
 #Convertimos la tabla al formato largo
-ESTADO.PROM.MAYO <- melt(Estado.prom,id=c("Mes"),variable.name="Estado")
+ESTADO.OCTUBRE.PROM <- melt(ESTADO.OCTUBRE.PROM,id=c("MES"),variable.name="ESTADO")
 
-save(ESTADO.PROM.MAYO, file="Promedios Entidad Para Mayo.RData")
+save(ESTADO.OCTUBRE.PROM, file="Promedios Entidad Para Octubre.RData")
 
-ESTADO.PROM.MAYO
+head(ESTADO.OCTUBRE.PROM, 15)
 
 ```
 
-Gr??ficamente los promedios por entidad para el mes se mayo, se muestran como sigue
+Gr??ficamente los promedios por entidad para el mes se octubre, se muestran como sigue
 
-```{r PromMayoPorEstado, echo=FALSE}
+```{r PromOctPorEstado, echo=FALSE}
 
-ggplot(ESTADO.PROM.MAYO,aes(x=reorder(ESTADO,value),y=value,fill=Mes))+geom_bar(stat="identity")+theme_bw()+theme(strip.background = element_blank(),axis.text = element_text(colour=grey(.50)),axis.ticks=element_line(colour=grey(.80)),axis.text.x = element_text(size=12),axis.text.y = element_text(size=15, angle=45),plot.title = element_text(size =20),axis.title = element_text(colour=grey(.45)))+labs(title="Promedio por estado en el mes de mayo de los casos de violencia intrafamiliar",x="Estado",y="Numero de casos")+theme(legend.position="none")+coord_flip()+scale_fill_manual(values = c("skyblue3"))
+library(ggplot2)
+
+ggplot(ESTADO.OCTUBRE.PROM,aes(x=reorder(ESTADO.OCTUBRE.PROM$Var2,value),y=value,fill=Var1))+geom_bar(stat="identity")+theme_bw()+theme(strip.background = element_blank(),axis.text = element_text(colour=grey(.50)),axis.ticks=element_line(colour=grey(.80)),axis.text.x = element_text(size=12),axis.text.y = element_text(size=15, angle=45),plot.title = element_text(size =20),axis.title = element_text(colour=grey(.45)))+labs(title="Promedio por estado en el mes de octubre de los casos de violencia intrafamiliar",x="Estado",y="Numero de casos")+theme(legend.position="none")+coord_flip()+scale_fill_manual(values = c("skyblue3"))
 
 ```
 
